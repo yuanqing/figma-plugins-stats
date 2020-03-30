@@ -3,25 +3,25 @@ name: scrape
 on:
   push:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: "0 */6 * * *"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 12
-    - run: yarn install --frozen-lockfile
-    - run: yarn run scrape
-    - run: |
-        rm -rf .git
-        git clone --single-branch --branch gh-pages --depth 1 https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git gh-pages
-        cd gh-pages
-        git config user.email actions@github.com
-        git config user.name 'GitHub Actions'
-        cp -r ../data/. .
-        git add .
-        git commit -m 'Scrape'
-        git push origin gh-pages
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: yarn install --frozen-lockfile
+      - run: yarn run scrape
+      - run: |
+          rm -rf .git
+          git clone --single-branch --branch gh-pages --depth 1 https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git gh-pages
+          cd gh-pages
+          git config user.email actions@github.com
+          git config user.name 'GitHub Actions'
+          cp -r ../data/. .
+          git add .
+          git commit -m 'Scrape'
+          git push origin gh-pages
