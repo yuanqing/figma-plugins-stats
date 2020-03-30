@@ -2,9 +2,13 @@ const fetch = require('isomorphic-unfetch')
 const fs = require('fs-extra')
 const path = require('path')
 
+const DATA_DIRECTORY = 'data'
+const INDEX_FILE = 'index.json'
+
 async function main () {
   const data = await fetchData()
-  await writeData(data)
+  await writeDataFile(data)
+  await writeIndexFile()
 }
 main()
 
@@ -16,14 +20,21 @@ async function fetchData () {
     const json = await response.json()
     data = data.concat(json.meta.plugins)
     url = json.pagination.next_page
+    break
   }
   return data
 }
 
-async function writeData (data) {
-  const directory = 'data'
+async function writeDataFile (data) {
   const date = new Date().toISOString().slice(0, 10)
-  const file = path.join(directory, `${date}.json`)
-  await fs.ensureDir(directory)
-  await fs.writeFile(file, JSON.stringify(data), 'utf8')
+  const file = path.join(DATA_DIRECTORY, `${date}.json`)
+  await fs.outputFile(file, JSON.stringify(data), 'utf8')
+}
+
+async function writeIndexFile () {
+  const files = fs.readdirSync(DATA_DIRECTORY).filter(function (file) {
+    return path.extname(file) === '.json' && file !== INDEX_FILE
+  })
+  const file = path.join(DATA_DIRECTORY, INDEX_FILE)
+  await fs.outputFile(file, JSON.stringify(files), 'utf8')
 }
