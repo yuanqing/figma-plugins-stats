@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "scripts": {
+    "fix": "prettier-standard 'src/**/*.js'",
+    "lint": "standard 'src/**/*.js'",
+    "scrape": "node src/scrape.js"
+  },
+  "dependencies": {
+    "fs-extra": "^9.0.0",
+    "isomorphic-unfetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "prettier-standard": "^16.2.1",
+    "standard": "^14.3.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "standard",
+      "prettier-standard"
+    ]
+  }
+}
