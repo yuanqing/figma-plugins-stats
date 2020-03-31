@@ -1,7 +1,7 @@
 {
   "name": "figma-plugins-data",
   "version": "0.0.2",
-  "description": "Get the latest Figma Plugins meta data and statistics",
+  "description": "Fetch the latest Figma plugins meta data and stats",
   "keywords": [
     "figma",
     "figma-plugin",
