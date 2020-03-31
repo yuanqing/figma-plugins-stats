@@ -20,7 +20,6 @@ async function fetchData () {
     const json = await response.json()
     data = data.concat(json.meta.plugins)
     url = json.pagination.next_page
-    break
   }
   return data
 }
@@ -32,9 +31,14 @@ async function writeDataFile (data) {
 }
 
 async function writeIndexFile () {
-  const files = fs.readdirSync(DATA_DIRECTORY).filter(function (file) {
-    return path.extname(file) === '.json' && file !== INDEX_FILE
-  })
+  const files = fs
+    .readdirSync(DATA_DIRECTORY)
+    .filter(function (file) {
+      return path.extname(file) === '.json' && file !== INDEX_FILE
+    })
+    .map(function (file) {
+      return path.basename(file, '.json')
+    })
   const file = path.join(DATA_DIRECTORY, INDEX_FILE)
   await fs.outputFile(file, JSON.stringify(files), 'utf8')
 }
