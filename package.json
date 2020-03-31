@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "clean": "rm -rf '*.log' data",
     "fix": "prettier-standard 'src/**/*.js'",
     "lint": "standard 'src/**/*.js'",
     "scrape": "node src/scrape.js"

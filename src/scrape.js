@@ -4,41 +4,72 @@ const path = require('path')
 
 const DATA_DIRECTORY = 'data'
 const INDEX_FILE = 'index.json'
+const META_DATA_FILE = 'plugins.json'
 
 async function main () {
-  const data = await fetchData()
-  await writeDataFile(data)
-  await writeIndexFile()
+  const data = await fetchRawData()
+  const metaData = await createMetaData(data)
+  await writeFile(metaData, META_DATA_FILE)
+  const statistics = await createStatistics(data)
+  const date = new Date().toISOString().slice(0, 10)
+  await writeFile(statistics, `${date}.json`)
+  const index = await createIndex()
+  await writeFile(index, INDEX_FILE)
 }
 main()
 
-async function fetchData () {
-  let data = []
+async function fetchRawData () {
+  let result = []
   let url = 'https://www.figma.com/api/plugins/all?sort_by=popular&page_size=50'
   while (typeof url !== 'undefined') {
     const response = await fetch(url)
     const json = await response.json()
-    data = data.concat(json.meta.plugins)
+    result = result.concat(json.meta.plugins)
     url = json.pagination.next_page
   }
-  return data
+  return result.sort(function (a, b) {
+    return a.id.localeCompare(b.id)
+  })
 }
 
-async function writeDataFile (data) {
-  const date = new Date().toISOString().slice(0, 10)
-  const file = path.join(DATA_DIRECTORY, `${date}.json`)
-  await fs.outputFile(file, JSON.stringify(data), 'utf8')
+function createMetaData (data) {
+  const result = {}
+  for (const item of data) {
+    const metaData = Object.values(item.versions)[0]
+    result[item.id] = {
+      name: metaData.name,
+      description: metaData.description,
+      lastUpdateDate: metaData.created_at,
+      tags: [].concat(item.tags).sort()
+    }
+  }
+  return result
 }
 
-async function writeIndexFile () {
-  const files = fs
+function createStatistics (data) {
+  const result = {}
+  for (const item of data) {
+    result[item.id] = [item.install_count, item.like_count, item.view_count]
+  }
+  return result
+}
+
+async function createIndex () {
+  return fs
     .readdirSync(DATA_DIRECTORY)
     .filter(function (file) {
-      return path.extname(file) === '.json' && file !== INDEX_FILE
+      return (
+        path.extname(file) === '.json' &&
+        file !== INDEX_FILE &&
+        file !== META_DATA_FILE
+      )
     })
     .map(function (file) {
       return path.basename(file, '.json')
     })
-  const file = path.join(DATA_DIRECTORY, INDEX_FILE)
-  await fs.outputFile(file, JSON.stringify(files), 'utf8')
+}
+
+async function writeFile (data, fileName) {
+  const file = path.join(DATA_DIRECTORY, fileName)
+  await fs.outputFile(file, JSON.stringify(data), 'utf8')
 }
