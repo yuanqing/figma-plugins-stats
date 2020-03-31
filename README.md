@@ -1,6 +1,6 @@
 # figma-plugins-data [![npm Version](https://img.shields.io/npm/v/figma-plugins-data)](https://www.npmjs.com/package/figma-plugins-data) [![build](https://github.com/yuanqing/figma-plugins-data/workflows/build/badge.svg)](https://github.com/yuanqing/figma-plugins-data/actions?query=workflow%3Abuild)
 
-> Get the latest [Figma Plugins](https://www.figma.com/community) meta data and statistics
+> Fetch the latest [Figma plugins](https://www.figma.com/community) meta data and stats
 
 ## API
 
@@ -10,7 +10,7 @@ const figmaPluginsData = require('figma-plugins-data')
 
 #### const data = await figmaPluginsData()
 
-Fetches the live meta data and statistics of all Figma Plugins. Each object literal in the `data` array has the following keys:
+Fetches the latest meta data and stats of all public Figma plugins. Each object literal in the `data` array has the following keys:
 
 - `id`
 - `name`
