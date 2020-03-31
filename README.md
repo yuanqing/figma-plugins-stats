@@ -10,7 +10,7 @@ const figmaPluginsData = require('figma-plugins-data')
 
 #### const data = await figmaPluginsData()
 
-Fetches the live meta data and statistics of each Figma Plugin. Each object literal in the `data` array has the following keys:
+Fetches the live meta data and statistics of all Figma Plugins. Each object literal in the `data` array has the following keys:
 
 - `id`
 - `name`
