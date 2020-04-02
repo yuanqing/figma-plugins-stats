@@ -8,23 +8,18 @@ const META_DATA_FILE = 'index.json'
 async function main () {
   const date = new Date().toISOString().slice(0, 10)
   const data = await figmaPluginsData()
-  const { plugins, statistics } = parseData(data, date)
-  await writeFile({ date, plugins }, META_DATA_FILE)
+  await writeFile({ date, plugins: data }, META_DATA_FILE)
+  const statistics = parseStatistics(data)
   await writeFile(statistics, `${date}.json`)
 }
 main()
 
-function parseData (data) {
-  const plugins = []
+function parseStatistics (data) {
   const statistics = {}
-  for (const { id, installCount, likeCount, viewCount, ...rest } of data) {
-    plugins.push({ id, ...rest })
+  for (const { id, installCount, likeCount, viewCount } of data) {
     statistics[id] = [installCount, likeCount, viewCount]
   }
-  return {
-    plugins,
-    statistics
-  }
+  return statistics
 }
 
 async function writeFile (data, fileName) {
