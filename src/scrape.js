@@ -3,46 +3,28 @@ const path = require('path')
 const figmaPluginsData = require('./figma-plugins-data')
 
 const DATA_DIRECTORY = 'data'
-const INDEX_FILE = 'index.json'
-const META_DATA_FILE = 'plugins.json'
+const META_DATA_FILE = 'index.json'
 
 async function main () {
-  const data = await figmaPluginsData()
-  const { metaData, statistics } = parseData(data)
-  await writeFile(metaData, META_DATA_FILE)
   const date = new Date().toISOString().slice(0, 10)
+  const data = await figmaPluginsData()
+  const { plugins, statistics } = parseData(data, date)
+  await writeFile({ date, plugins }, META_DATA_FILE)
   await writeFile(statistics, `${date}.json`)
-  const index = await createIndex()
-  await writeFile(index, INDEX_FILE)
 }
 main()
 
 function parseData (data) {
-  const metaData = []
+  const plugins = []
   const statistics = {}
   for (const { id, installCount, likeCount, viewCount, ...rest } of data) {
-    metaData.push({ id, ...rest })
+    plugins.push({ id, ...rest })
     statistics[id] = [installCount, likeCount, viewCount]
   }
   return {
-    metaData,
+    plugins,
     statistics
   }
-}
-
-async function createIndex () {
-  return fs
-    .readdirSync(DATA_DIRECTORY)
-    .filter(function (file) {
-      return (
-        path.extname(file) === '.json' &&
-        file !== INDEX_FILE &&
-        file !== META_DATA_FILE
-      )
-    })
-    .map(function (file) {
-      return path.basename(file, '.json')
-    })
 }
 
 async function writeFile (data, fileName) {
