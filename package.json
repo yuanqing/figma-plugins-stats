@@ -16,18 +16,20 @@
   "files": [
     "src"
   ],
-  "main": "src/figma-plugins-data.js",
+  "main": "src/index.js",
   "scripts": {
     "clean": "rm -rf '*.log' data",
     "fix": "prettier-standard 'src/**/*.js' && prettier --write '.github/**/*.yml'",
     "lint": "standard 'src/**/*.js'",
-    "scrape": "node src/scrape.js"
+    "scrape": "node scripts/scrape.js",
+    "test": "ava --timeout 300s"
   },
   "dependencies": {
     "fs-extra": "^9.0.0",
     "isomorphic-unfetch": "^3.0.0"
   },
   "devDependencies": {
+    "ava": "^3.5.2",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
     "prettier": "^2.0.2",

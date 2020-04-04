@@ -5,12 +5,16 @@
 ## API
 
 ```js
-const figmaPluginsData = require('figma-plugins-data')
+const {fetchAuthorId, fetchPluginsData} = require('figma-plugins-data')
 ```
 
-#### const data = await figmaPluginsData()
+#### const authorId = await fetchAuthorId([authorHandle])
 
-Fetches the latest meta data and stats of all public Figma plugins. Each object literal in the `data` array has the following keys:
+Fetches the `authorId` of the given `authorHandle`.
+
+#### const pluginsData = await fetchPluginsData()
+
+Fetches the latest meta data and stats of all public Figma plugins. Each object literal in the `pluginsData` array has the following keys:
 
 - `id`
 - `name`
@@ -18,7 +22,7 @@ Fetches the latest meta data and stats of all public Figma plugins. Each object 
 - `lastUpdateDate`
 - `tags`
 - `authorId`
-- `authorHandle`
+- `authorName`
 - `installCount`
 - `likeCount`
 - `viewCount`

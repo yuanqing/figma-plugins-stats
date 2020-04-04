@@ -1,6 +1,6 @@
-const fetch = require('./fetch')
+const fetch = require('./utilities/fetch')
 
-async function figmaPluginsData () {
+async function fetchPluginsData () {
   const data = await fetchRawData()
   return parseData(data)
 }
@@ -28,7 +28,7 @@ function parseData (data) {
       lastUpdateDate: metaData.created_at,
       tags: [].concat(item.tags).sort(),
       authorId: item.creator.id,
-      authorHandle: item.creator.handle,
+      authorName: item.creator.handle,
       installCount: item.install_count,
       likeCount: item.like_count,
       viewCount: item.view_count
@@ -39,4 +39,4 @@ function parseData (data) {
   })
 }
 
-module.exports = figmaPluginsData
+module.exports = fetchPluginsData
