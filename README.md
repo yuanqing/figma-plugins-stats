@@ -5,7 +5,7 @@
 ## API
 
 ```js
-const {fetchAuthorId, fetchPluginsData} = require('figma-plugins-data')
+const { fetchAuthorId, fetchPluginsData } = require('figma-plugins-data')
 ```
 
 #### const authorId = await fetchAuthorId([authorHandle])
