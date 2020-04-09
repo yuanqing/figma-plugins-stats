@@ -6,9 +6,11 @@ const formatData = require('./format-data')
 
 sade('figma-plugins-data [handle]', true)
   .option('-t, --time', 'Time offset', 7)
-  .action(async function (handle, { time }) {
+  .option('-s, --sort', 'Sort order', 7)
+  .action(async function (handle, { time, sort }) {
     const data = await figmaPluginsData({
       authorHandle: handle,
+      sort,
       timeOffset: time
     })
     console.log(formatData(data, { timeOffset: time }))

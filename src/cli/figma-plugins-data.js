@@ -1,15 +1,16 @@
-const fetch = require('../utilities/fetch')
-const fetchAuthorId = require('../fetch-author-id')
 const parseISO = require('date-fns/parseISO')
 const subDays = require('date-fns/subDays')
+const fetch = require('../utilities/fetch')
+const fetchAuthorId = require('../fetch-author-id')
+const sortComparators = require('./sort-comparators')
 
-async function figmaPluginsData ({ authorHandle, timeOffset }) {
+async function figmaPluginsData ({ authorHandle, sort, timeOffset }) {
   let data = await fetchScrapedData(timeOffset)
   const authorId =
     typeof authorHandle === 'undefined'
       ? null
       : await fetchAuthorId(authorHandle)
-  data = parseData(data, { authorId })
+  data = parseData(data, { authorId, sortComparator: sortComparators[sort] })
   return data
 }
 
@@ -51,7 +52,7 @@ const MAP_KEY_TO_INDEX = {
   viewCount: 2
 }
 
-function parseData ({ plugins, stats }, { authorId }) {
+function parseData ({ plugins, stats }, { authorId, sortComparator }) {
   if (authorId !== null) {
     plugins = plugins.filter(function (plugin) {
       return plugin.authorId === authorId
@@ -81,7 +82,7 @@ function parseData ({ plugins, stats }, { authorId }) {
       ...pluginCounts
     })
   }
-  return result
+  return result.sort(sortComparator)
 }
 
 function computeDeltas (counts) {
