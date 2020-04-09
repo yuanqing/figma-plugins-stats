@@ -19,8 +19,8 @@
   "main": "src/index.js",
   "scripts": {
     "clean": "rm -rf '*.log' data",
-    "fix": "prettier-standard 'src/**/*.js' && prettier --write '.github/**/*.yml'",
-    "lint": "standard 'src/**/*.js'",
+    "fix": "prettier-standard '{scripts,src}/**/*.js' && prettier --write '.github/**/*.yml'",
+    "lint": "standard '{scripts,src}/**/*.js'",
     "scrape": "node scripts/scrape.js",
     "test": "ava --timeout 300s"
   },
