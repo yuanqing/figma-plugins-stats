@@ -4,14 +4,15 @@ const fetchPluginsData = require('../src/fetch-plugins-data')
 
 const DATA_DIRECTORY_NAME = 'data'
 const META_DATA_FILE_NAME = 'index.json'
+const STATS_DATA_FILE_NAME = 'stats.json'
 
 async function main () {
   const date = new Date().toISOString()
   const pluginsData = await fetchPluginsData()
   await writeFile({ date, plugins: pluginsData }, META_DATA_FILE_NAME)
   const stats = extractStats(pluginsData)
-  const statsFileName = `${date.slice(0, 10)}.json`
-  await writeFile({ date, stats }, statsFileName)
+  await writeFile({ date, stats }, STATS_DATA_FILE_NAME)
+  await writeFile({ date, stats }, `${date.slice(0, 10)}.json`)
 }
 main()
 
