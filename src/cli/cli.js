@@ -10,8 +10,8 @@ const log = require('./utilities/log')
 sade('figma-plugins-stats [handle]', true)
   .describe('Figma plugins meta data and stats')
   .option('-l, --limit', 'Limit the number of plugins returned')
-  .option('-s, --sort', 'Sort order', 'installs')
-  .option('-t, --time', 'Number of days of historical data', 7)
+  .option('-s, --sort', 'Set the sort order', 'installs')
+  .option('-t, --time', 'Set the number of days of historical data to show', 7)
   .action(async function (handle, { limit, sort, time }) {
     try {
       const { plugins, totals, startDate } = await figmaPluginsData({

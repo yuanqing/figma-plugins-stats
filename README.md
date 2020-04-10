@@ -38,8 +38,8 @@ $ npx figma-plugins-stats --help
 
   Options
     -l, --limit      Limit the number of plugins returned
-    -s, --sort       Sort order  (default installs)
-    -t, --time       Number of days of historical data  (default 7)
+    -s, --sort       Set the sort order  (default installs)
+    -t, --time       Set the number of days of historical data to show  (default 7)
     -v, --version    Displays current version
     -h, --help       Displays this message
 
