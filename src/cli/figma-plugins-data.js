@@ -3,41 +3,42 @@ const subDays = require('date-fns/subDays')
 const isBefore = require('date-fns/isBefore')
 const fetch = require('../utilities/fetch')
 const fetchAuthorId = require('../fetch-author-id')
+const fetchPluginsData = require('../fetch-plugins-data')
 const sortComparators = require('./sort-comparators')
 
 async function figmaPluginsData ({ authorHandle, limit, sort, timeOffset }) {
-  let data = await fetchScrapedData(timeOffset)
+  const plugins = await fetchPluginsData()
+  const stats = await fetchScrapedStats(timeOffset)
   const authorId =
     typeof authorHandle === 'undefined'
       ? null
       : await fetchAuthorId(authorHandle)
-  data = parseData(data, {
+  return parseData(plugins, stats, {
     authorId,
     limit,
     sortComparator: sortComparators[sort]
   })
-  return data
 }
 
-const BASE_URL = 'https://yuanqing.github.io/figma-plugins-data/'
+const BASE_URL = 'https://yuanqing.github.io/figma-plugins-data'
 const EARLIEST_DATE = new Date('2020-04-01')
 
-async function fetchScrapedData (timeOffset) {
-  const response = await fetch(BASE_URL)
+async function fetchScrapedStats (timeOffset) {
+  const response = await fetch(`${BASE_URL}/stats.json`)
   const json = await response.json()
+  const stats = json.stats
   const endDate = parseISO(json.date)
-  const plugins = json.plugins
   let i = 0
   let date = endDate
   const promises = []
-  while (i < timeOffset + 1) {
+  while (i < timeOffset) {
     date = subDays(date, 1)
     if (isBefore(date, EARLIEST_DATE) === true) {
       break
     }
     promises.push(
       new Promise(function (resolve) {
-        fetch(`${BASE_URL}${date.toISOString().slice(0, 10)}.json`)
+        fetch(`${BASE_URL}/${date.toISOString().slice(0, 10)}.json`)
           .then(function (response) {
             return response.json()
           })
@@ -48,11 +49,8 @@ async function fetchScrapedData (timeOffset) {
     )
     i++
   }
-  const stats = (await Promise.all(promises)).reverse()
-  return {
-    plugins,
-    stats
-  }
+  const result = await Promise.all(promises)
+  return [stats, ...result].reverse()
 }
 
 const MAP_KEY_TO_INDEX = {
@@ -61,7 +59,7 @@ const MAP_KEY_TO_INDEX = {
   viewCount: 2
 }
 
-function parseData ({ plugins, stats }, { authorId, limit, sortComparator }) {
+function parseData (plugins, stats, { authorId, limit, sortComparator }) {
   if (authorId !== null) {
     plugins = plugins.filter(function (plugin) {
       return plugin.authorId === authorId
@@ -79,6 +77,7 @@ function parseData ({ plugins, stats }, { authorId, limit, sortComparator }) {
           typeof stat[plugin.id] === 'undefined' ? null : stat[plugin.id][index]
         )
       }
+      counts.push(plugin[key])
       pluginCounts[key] = {
         currentCount: counts[counts.length - 1],
         counts,

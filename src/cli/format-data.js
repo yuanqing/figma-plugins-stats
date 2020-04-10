@@ -5,9 +5,19 @@ const stripAnsi = require('strip-ansi')
 
 const keys = ['installCount', 'likeCount', 'viewCount']
 
-function formatData (data, { timeOffset }) {
-  const showSparklines = timeOffset > 1
-  const rows = [createHeaders(showSparklines)]
+function formatData (data) {
+  const headers = [
+    kleur.gray('no'),
+    kleur.gray(' name'),
+    kleur.gray(' author'),
+    kleur.gray(' installs'),
+    '',
+    kleur.gray(' likes'),
+    '',
+    kleur.gray(' views'),
+    ''
+  ]
+  const rows = [headers]
   data.forEach(function (plugin, index) {
     const row = [
       index + 1,
@@ -17,9 +27,7 @@ function formatData (data, { timeOffset }) {
     for (const key of keys) {
       const count = plugin[key]
       row.push(
-        `${
-          showSparklines === true ? ` ${sparkly(count.deltas)}` : ''
-        } ${count.currentCount.toLocaleString()}`
+        ` ${sparkly(count.deltas)} ${count.currentCount.toLocaleString()}`
       )
       row.push(
         count.totalDelta > 0
@@ -35,19 +43,6 @@ function formatData (data, { timeOffset }) {
       return stripAnsi(string).length
     }
   })
-}
-
-const NUMBER = kleur.gray('no')
-const PLUGIN_NAME = kleur.gray(' name')
-const AUTHOR = kleur.gray(' author')
-const INSTALLS = kleur.gray(' installs')
-const LIKES = kleur.gray(' likes')
-const VIEWS = kleur.gray(' views')
-
-function createHeaders (showSparklines) {
-  return showSparklines
-    ? [NUMBER, PLUGIN_NAME, AUTHOR, INSTALLS, '', LIKES, '', VIEWS, '']
-    : [NUMBER, PLUGIN_NAME, AUTHOR, INSTALLS, '', LIKES, '', VIEWS, '']
 }
 
 module.exports = formatData

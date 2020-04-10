@@ -31,7 +31,10 @@ sade('figma-plugins-data [handle]', true)
         sort,
         timeOffset: time
       })
-      const string = formatData(data, { timeOffset: time })
+      if (data.length === 0) {
+        throw new Error(`User ‘${handle}’ has no public plugins`)
+      }
+      const string = formatData(data)
       console.log(`\n${indentString(string, 2)}\n`)
     } catch (error) {
       log.error(error.message)
