@@ -3,7 +3,8 @@
 const indentString = require('indent-string')
 const sade = require('sade')
 const figmaPluginsData = require('./figma-plugins-data')
-const formatData = require('./format-data')
+const formatDate = require('./format-date')
+const createTable = require('./create-table')
 const log = require('./log')
 
 sade('figma-plugins-data [handle]', true)
@@ -13,14 +14,19 @@ sade('figma-plugins-data [handle]', true)
   .option('-t, --time', 'Number of days of historical data', 7)
   .action(async function (handle, { limit, sort, time }) {
     try {
-      const { plugins, totals } = await figmaPluginsData({
+      const { plugins, totals, startDate } = await figmaPluginsData({
         authorHandle: handle,
         limit,
         sort,
         timeOffset: time
       })
-      const string = formatData(plugins, totals)
-      console.log(`\n${indentString(string, 2)}\n`)
+      console.log()
+      const date = formatDate(startDate)
+      console.log(indentString(date, 2))
+      console.log()
+      const table = createTable({ plugins, totals })
+      console.log(indentString(table, 2))
+      console.log()
     } catch (error) {
       log.error(error.message)
       process.exit(1)

@@ -1,11 +1,11 @@
-const table = require('text-table')
 const kleur = require('kleur')
 const sparkly = require('sparkly')
 const stripAnsi = require('strip-ansi')
+const table = require('text-table')
 
 const keys = ['installCount', 'likeCount', 'viewCount']
 
-function formatData (plugins, totals) {
+function createTable ({ plugins, totals }) {
   const headers = [
     kleur.gray('no'),
     kleur.gray(' name'),
@@ -52,6 +52,7 @@ function formatData (plugins, totals) {
     )} ${totals.viewCount.count.toLocaleString()}`,
     kleur.green(`↑${totals.viewCount.totalDelta.toLocaleString()}`)
   ]
+  rows.push([])
   rows.push(totalRow)
   return table(rows, {
     hsep: ' ',
@@ -61,4 +62,4 @@ function formatData (plugins, totals) {
   })
 }
 
-module.exports = formatData
+module.exports = createTable

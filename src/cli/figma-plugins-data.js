@@ -8,7 +8,7 @@ const sortComparators = require('./sort-comparators')
 
 async function figmaPluginsData ({ authorHandle, limit, sort, timeOffset }) {
   const pluginsData = await fetchPluginsData()
-  const stats = await fetchScrapedStats(timeOffset)
+  const { stats, startDate } = await fetchScrapedStats(timeOffset)
   const authorId =
     typeof authorHandle === 'undefined'
       ? null
@@ -23,7 +23,8 @@ async function figmaPluginsData ({ authorHandle, limit, sort, timeOffset }) {
   }
   return {
     plugins,
-    totals: computeTotals(plugins, { timeOffset })
+    totals: computeTotals(plugins, { timeOffset }),
+    startDate
   }
 }
 
@@ -34,15 +35,16 @@ async function fetchScrapedStats (timeOffset) {
   const response = await fetch(`${BASE_URL}/stats.json`)
   const json = await response.json()
   const stats = json.stats
-  const endDate = parseISO(json.date)
   let i = 0
-  let date = endDate
+  let date = parseISO(json.date)
+  let startDate = new Date(date.getTime())
   const promises = []
   while (i < timeOffset) {
     date = subDays(date, 1)
     if (isBefore(date, EARLIEST_DATE) === true) {
       break
     }
+    startDate = new Date(date.getTime())
     promises.push(
       new Promise(function (resolve) {
         fetch(`${BASE_URL}/${date.toISOString().slice(0, 10)}.json`)
@@ -57,7 +59,10 @@ async function fetchScrapedStats (timeOffset) {
     i++
   }
   const result = await Promise.all(promises)
-  return [stats, ...result].reverse()
+  return {
+    startDate,
+    stats: [stats, ...result].reverse()
+  }
 }
 
 const MAP_KEY_TO_INDEX = {
