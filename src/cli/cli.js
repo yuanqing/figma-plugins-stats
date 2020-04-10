@@ -6,14 +6,26 @@ const formatData = require('./format-data')
 const log = require('./log')
 
 sade('figma-plugins-data [handle]', true)
-  .option('-n, --number', 'Limit the number of plugins returned')
+  .describe('Figma plugins meta data and stats')
+  .example('yuanqing')
+  .option('-l, --limit', 'Limit the number of plugins returned')
+  .example('--limit 10')
   .option('-s, --sort', 'Sort order', 'installs')
-  .option('-t, --time', 'Time offset', 7)
-  .action(async function (handle, { number, sort, time }) {
+  .example('--sort name')
+  .example('--sort author')
+  .example('--sort installs')
+  .example('--sort installsDelta')
+  .example('--sort likes')
+  .example('--sort likesDelta')
+  .example('--sort views')
+  .example('--sort viewsDelta')
+  .option('-t, --time', 'Historical data to return, in number of days', 7)
+  .example('--time 7')
+  .action(async function (handle, { limit, sort, time }) {
     try {
       const data = await figmaPluginsData({
         authorHandle: handle,
-        limit: number,
+        limit,
         sort,
         timeOffset: time
       })
