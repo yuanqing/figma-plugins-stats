@@ -1,5 +1,5 @@
 {
-  "name": "figma-plugins-data",
+  "name": "figma-plugins-stats",
   "version": "0.0.6",
   "description": "Figma plugins meta data and stats",
   "keywords": [
@@ -11,13 +11,13 @@
   "author": "Lim Yuan Qing",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yuanqing/figma-plugins-data.git"
+    "url": "git://github.com/yuanqing/figma-plugins-stats.git"
   },
   "files": [
     "src"
   ],
   "bin": {
-    "figma-plugins-data": "src/cli/cli.js"
+    "figma-plugins-stats": "src/cli/cli.js"
   },
   "main": "src/index.js",
   "scripts": {

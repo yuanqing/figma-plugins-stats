@@ -1,11 +1,11 @@
-# figma-plugins-data [![npm Version](https://badgen.net/npm/v/figma-plugins-data)](https://www.npmjs.com/package/figma-plugins-data) [![build](https://github.com/yuanqing/figma-plugins-data/workflows/build/badge.svg)](https://github.com/yuanqing/figma-plugins-data/actions?query=workflow%3Abuild)
+# figma-plugins-stats [![npm Version](https://badgen.net/npm/v/figma-plugins-stats)](https://www.npmjs.com/package/figma-plugins-stats) [![build](https://github.com/yuanqing/figma-plugins-stats/workflows/build/badge.svg)](https://github.com/yuanqing/figma-plugins-stats/actions?query=workflow%3Abuild)
 
 > [Figma plugins](https://www.figma.com/community) meta data and stats
 
 ## Quick start
 
 ```
-$ npx figma-plugins-data tom
+$ npx figma-plugins-stats tom
 
   period  7d
   from    2020-04-03 14:04:58 UTC+8
@@ -28,13 +28,13 @@ $ npx figma-plugins-data tom
 ## CLI
 
 ```
-$ npx figma-plugins-data --help
+$ npx figma-plugins-stats --help
 
   Description
     Figma plugins meta data and stats
 
   Usage
-    $ figma-plugins-data [handle] [options]
+    $ figma-plugins-stats [handle] [options]
 
   Options
     -l, --limit      Limit the number of plugins returned
@@ -44,25 +44,25 @@ $ npx figma-plugins-data --help
     -h, --help       Displays this message
 
   Examples
-    $ figma-plugins-data
-    $ figma-plugins-data yuanqing
-    $ figma-plugins-data --limit 10
-    $ figma-plugins-data --sort name
-    $ figma-plugins-data --sort author
-    $ figma-plugins-data --sort installs
-    $ figma-plugins-data --sort installsDelta
-    $ figma-plugins-data --sort likes
-    $ figma-plugins-data --sort likesDelta
-    $ figma-plugins-data --sort views
-    $ figma-plugins-data --sort viewsDelta
-    $ figma-plugins-data --time 7
+    $ figma-plugins-stats
+    $ figma-plugins-stats yuanqing
+    $ figma-plugins-stats --limit 10
+    $ figma-plugins-stats --sort name
+    $ figma-plugins-stats --sort author
+    $ figma-plugins-stats --sort installs
+    $ figma-plugins-stats --sort installsDelta
+    $ figma-plugins-stats --sort likes
+    $ figma-plugins-stats --sort likesDelta
+    $ figma-plugins-stats --sort views
+    $ figma-plugins-stats --sort viewsDelta
+    $ figma-plugins-stats --time 7
 
 ```
 
 ## API
 
 ```js
-const { fetchAuthorId, fetchPluginsData } = require('figma-plugins-data')
+const { fetchAuthorId, fetchPluginsData } = require('figma-plugins-stats')
 ```
 
 #### const authorId = await fetchAuthorId([authorHandle])
@@ -87,7 +87,7 @@ Fetches the latest meta data and stats of all public Figma plugins. Each object 
 ## Installation
 
 ```sh
-$ yarn global add figma-plugins-data
+$ yarn global add figma-plugins-stats
 ```
 
 ## License
