@@ -5,22 +5,23 @@
 ## Quick start
 
 ```
-$ npx figma-plugins-data yuanqing
+$ npx figma-plugins-data tom
 
-  no  name                       author         installs               likes            views
-  1   Clean Document             Yuan Qing Lim  ██▇▅▆██ 21,599 ↑1,056  ▃█▇▂▄▄▂ 290 ↑23  █▇▇▄▅▇█ 13,566 ↑870
-  2   Sort Layers                Yuan Qing Lim  ▅██▇▂▅▁ 1,519  ↑41     ▁▁▁▁▁▁█ 19  ↑1   ▆█▄▂▄▆▄ 451    ↑17
-  3   Insert Big Image           Yuan Qing Lim  ▂▂█▂▂▄▃ 1,065  ↑105    ▁█▁▁█▁▁ 32  ↑2   ▃▅▆▂▃▅█ 956    ↑73
-  4   Component Utilities        Yuan Qing Lim  ▂▆█▄▅█▄ 1,039  ↑38     ▁▁█▁▁▁█ 31  ↑2   ▄▂▇▂▁▄█ 817    ↑39
-  5   Language Tester            Yuan Qing Lim  ▁▄▄█▂▄▇ 1,024  ↑15     ▁▁▁▁▁█▁ 17  ↑1   █▆▃▃▆▃▄ 362    ↑23
-  6   Organize Layers            Yuan Qing Lim  ▅▄█▂▄▇▃ 962    ↑46     ▁█▁▁▁▁▁ 32  ↑2   █▆█▄▂▆█ 395    ↑21
-  7   Distribute Layers          Yuan Qing Lim  ▁▂██▂▂▁ 701    ↑13     ▁▁▁▁▁▁▁ 6        ▁▁█▁▁▁▁ 72     ↑1
-  8   Move Layers                Yuan Qing Lim  ▁▂▆██▂▁ 686    ↑13     ▁▁▁▁▁▁▁ 6        ▄▂▂▁██▂ 117    ↑13
-  9   Select Layers              Yuan Qing Lim  ▆█▆▃▂▆▆ 621    ↑38     ▁▁▁▁█▁█ 21  ↑2   ▂▅▂▁▁▂█ 252    ↑27
-  10  Format Currency            Yuan Qing Lim  ▁▆▆█▂▃▂ 586    ↑18     ▁▁▁▁▁▁▁ 11       ▁▄▁▄▄█▁ 196    ↑5
-  11  Draw Slice Over Selection  Yuan Qing Lim  ▁▄▆█▄▂▂ 575    ↑12     ▁▁▁▁▁▁▁ 3        ███▁▁▁▁ 68     ↑3
-  12  Draw Mask Under Selection  Yuan Qing Lim  ▁█▇▇▄▇▂ 225    ↑19     ▁▁▁▁▁▁▁ 7        ██▁█▁▁▁ 108    ↑3
-  13  Set Layer Size             Yuan Qing Lim  ▃▇█▇▂▇▂ 128    ↑25     ▁▁▁█▁▁▁ 10  ↑1   ▁▁█▄▄▂▂ 113    ↑14
+  from    2020-04-03 14:04:58 UTC+8
+  to      2020-04-10 18:33:14 UTC+8
+  period  7d
+
+  no  name                author     installs                likes             views
+  1   Themer              Tom Lowry  ▆▆▅█▆▇▇▁ 10,176 ↑209    ▁▁▁▄█▄▁▁ 108 ↑4   ▇▂▃██▇▆▂ 4,842  ↑236
+  2   Sorter              Tom Lowry  ▆▄▅▆▄█▅▁ 3,730  ↑75     ▁▁▁█▁▁▁▁ 38  ↑1   ▃▃▂▃▂█▄▁ 668    ↑26
+  3   Component Page      Tom Lowry  ▆█▅██▅▅▂ 3,211  ↑114    ▁▁▁█▁▄▁▁ 51  ↑3   ▃▂▃▂█▄▄▁ 1,563  ↑87
+  4   Send to Top         Tom Lowry  ██▃▆▆█▆▁ 1,820  ↑16     ▁▁▁█▁█▁▁ 4   ↑2   ▁▁▁▁▁▁█▁ 42     ↑1
+  5   Status Annotations  Tom Lowry  █▃▂█▄▄▃▁ 982    ↑558    █▃▃▄▄▃▁▁ 83  ↑41  █▄▂▄▂▂▁▁ 1,957  ↑1,032
+  6   Edit in place       Tom Lowry  ▂▄▂██▆▂▁ 871    ↑16     ▁▁▁▁▁▁▁▁ 16       ▁█▁██▁▁▁ 227    ↑3
+  7   Nester              Tom Lowry  ▃▂▁▂█▁▃▁ 559    ↑19     ▁▁▁██▁▁▁ 30  ↑2   ▇▃▃▁█▄▆▁ 971    ↑25
+  8   Dice                Tom Lowry  ▄▃▁███▅▁ 236    ↑44     ▁▁▄▁▁█▁▁ 12  ↑3   ▂▃▅█▆▃▆▁ 302    ↑38
+
+                          totals     █▄▃█▆▆▅▁ 21,585 ↑1,051  █▃▃▇▅▆▁▁ 342 ↑56  █▄▂▅▄▃▂▁ 10,572 ↑1,448
 
 ```
 
