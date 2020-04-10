@@ -1,5 +1,6 @@
 const parseISO = require('date-fns/parseISO')
 const subDays = require('date-fns/subDays')
+const isBefore = require('date-fns/isBefore')
 const fetch = require('../utilities/fetch')
 const fetchAuthorId = require('../fetch-author-id')
 const sortComparators = require('./sort-comparators')
@@ -19,6 +20,7 @@ async function figmaPluginsData ({ authorHandle, limit, sort, timeOffset }) {
 }
 
 const BASE_URL = 'https://yuanqing.github.io/figma-plugins-data/'
+const EARLIEST_DATE = new Date('2020-04-01')
 
 async function fetchScrapedData (timeOffset) {
   const response = await fetch(BASE_URL)
@@ -30,6 +32,9 @@ async function fetchScrapedData (timeOffset) {
   const promises = []
   while (i < timeOffset + 1) {
     date = subDays(date, 1)
+    if (isBefore(date, EARLIEST_DATE) === true) {
+      break
+    }
     promises.push(
       new Promise(function (resolve) {
         fetch(`${BASE_URL}${date.toISOString().slice(0, 10)}.json`)
