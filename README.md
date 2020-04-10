@@ -1,6 +1,6 @@
 # figma-plugins-data [![npm Version](https://badgen.net/npm/v/figma-plugins-data)](https://www.npmjs.com/package/figma-plugins-data) [![build](https://github.com/yuanqing/figma-plugins-data/workflows/build/badge.svg)](https://github.com/yuanqing/figma-plugins-data/actions?query=workflow%3Abuild)
 
-> Fetch the latest [Figma plugins](https://www.figma.com/community) meta data and stats
+> [Figma plugins](https://www.figma.com/community) meta data and stats
 
 ## API
 
