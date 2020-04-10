@@ -4,9 +4,9 @@ const isBefore = require('date-fns/isBefore')
 const fetch = require('../utilities/fetch')
 const fetchAuthorId = require('../fetch-author-id')
 const fetchPluginsData = require('../fetch-plugins-data')
-const sortComparators = require('./sort-comparators')
+const sortComparators = require('./utilities/sort-comparators')
 
-async function figmaPluginsData ({ authorHandle, limit, sort, timeOffset }) {
+async function figmaPluginsStats ({ authorHandle, limit, sort, timeOffset }) {
   const pluginsData = await fetchPluginsData()
   const { stats, startDate } = await fetchScrapedStats(timeOffset)
   const authorId =
@@ -139,4 +139,4 @@ function computeTotals (plugins, { timeOffset }) {
   return result
 }
 
-module.exports = figmaPluginsData
+module.exports = figmaPluginsStats

@@ -2,12 +2,12 @@
 
 const indentString = require('indent-string')
 const sade = require('sade')
-const figmaPluginsData = require('./figma-plugins-data')
-const formatDate = require('./format-date')
-const createTable = require('./create-table')
-const log = require('./log')
+const figmaPluginsData = require('./figma-plugins-stats')
+const formatDate = require('./utilities/format-date')
+const createTable = require('./utilities/create-table')
+const log = require('./utilities/log')
 
-sade('figma-plugins-data [handle]', true)
+sade('figma-plugins-stats [handle]', true)
   .describe('Figma plugins meta data and stats')
   .option('-l, --limit', 'Limit the number of plugins returned')
   .option('-s, --sort', 'Sort order', 'installs')
