@@ -4,13 +4,17 @@ const fetch = require('../utilities/fetch')
 const fetchAuthorId = require('../fetch-author-id')
 const sortComparators = require('./sort-comparators')
 
-async function figmaPluginsData ({ authorHandle, sort, timeOffset }) {
+async function figmaPluginsData ({ authorHandle, limit, sort, timeOffset }) {
   let data = await fetchScrapedData(timeOffset)
   const authorId =
     typeof authorHandle === 'undefined'
       ? null
       : await fetchAuthorId(authorHandle)
-  data = parseData(data, { authorId, sortComparator: sortComparators[sort] })
+  data = parseData(data, {
+    authorId,
+    limit,
+    sortComparator: sortComparators[sort]
+  })
   return data
 }
 
@@ -52,13 +56,13 @@ const MAP_KEY_TO_INDEX = {
   viewCount: 2
 }
 
-function parseData ({ plugins, stats }, { authorId, sortComparator }) {
+function parseData ({ plugins, stats }, { authorId, limit, sortComparator }) {
   if (authorId !== null) {
     plugins = plugins.filter(function (plugin) {
       return plugin.authorId === authorId
     })
   }
-  const result = []
+  let result = []
   for (const plugin of plugins) {
     const keys = Object.keys(MAP_KEY_TO_INDEX)
     const pluginCounts = {}
@@ -78,11 +82,16 @@ function parseData ({ plugins, stats }, { authorId, sortComparator }) {
       }
     }
     result.push({
-      name: plugin.name,
+      name: `${plugin.id} ${plugin.name}`,
+      author: plugin.authorName,
       ...pluginCounts
     })
   }
-  return result.sort(sortComparator)
+  result = result.sort(sortComparator)
+  if (typeof limit === 'undefined' || limit === true) {
+    return result
+  }
+  return result.slice(0, limit)
 }
 
 function computeDeltas (counts) {

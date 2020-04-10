@@ -33,6 +33,7 @@
     "fs-extra": "^9.0.0",
     "isomorphic-unfetch": "^3.0.0",
     "kleur": "^3.0.3",
+    "npmlog": "^4.1.2",
     "sade": "^1.7.3",
     "sparkly": "^5.0.0",
     "strip-ansi": "^6.0.0",

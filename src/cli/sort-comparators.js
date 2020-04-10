@@ -2,6 +2,9 @@ module.exports = {
   name: function (a, b) {
     return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   },
+  author: function (a, b) {
+    return a.author.toLowerCase().localeCompare(b.author.toLowerCase())
+  },
   installs: function (a, b) {
     return b.installCount.currentCount - a.installCount.currentCount
   },
