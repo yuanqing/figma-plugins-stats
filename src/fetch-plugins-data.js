@@ -14,6 +14,19 @@ async function fetchRawData () {
     result = result.concat(json.meta.plugins)
     url = json.pagination.next_page
   }
+  return deduplicate(result)
+}
+
+function deduplicate (data) {
+  const result = []
+  const ids = {}
+  for (const item of data) {
+    const id = item.id
+    if (ids[id] !== true) {
+      result.push(item)
+      ids[id] = true
+    }
+  }
   return result
 }
 
