@@ -27,11 +27,7 @@ function createTable ({ plugins, totals }) {
     for (const key of keys) {
       const count = plugin[key]
       row.push(` ${sparkly(count.deltas)} ${count.count.toLocaleString()}`)
-      row.push(
-        count.totalDelta > 0
-          ? kleur.green(`↑${count.totalDelta.toLocaleString()}`)
-          : ''
-      )
+      row.push(formatDelta(count.totalDelta))
     }
     rows.push(row)
   })
@@ -42,15 +38,15 @@ function createTable ({ plugins, totals }) {
     ` ${sparkly(
       totals.installCount.deltas
     )} ${totals.installCount.count.toLocaleString()}`,
-    kleur.green(`↑${totals.installCount.totalDelta.toLocaleString()}`),
+    formatDelta(totals.installCount.totalDelta),
     ` ${sparkly(
       totals.likeCount.deltas
     )} ${totals.likeCount.count.toLocaleString()}`,
-    kleur.green(`↑${totals.likeCount.totalDelta.toLocaleString()}`),
+    formatDelta(totals.likeCount.totalDelta),
     ` ${sparkly(
       totals.viewCount.deltas
     )} ${totals.viewCount.count.toLocaleString()}`,
-    kleur.green(`↑${totals.viewCount.totalDelta.toLocaleString()}`)
+    formatDelta(totals.viewCount.totalDelta)
   ]
   rows.push([])
   rows.push(totalRow)
@@ -60,6 +56,16 @@ function createTable ({ plugins, totals }) {
       return stripAnsi(string).length
     }
   })
+}
+
+function formatDelta (delta) {
+  if (delta < 0) {
+    return kleur.red(`↓${Math.abs(delta).toLocaleString()}`)
+  }
+  if (delta > 0) {
+    return kleur.green(`↑${delta.toLocaleString()}`)
+  }
+  return ''
 }
 
 module.exports = createTable
