@@ -87,7 +87,7 @@ function parseData ({ plugins, stats }, { authorId, limit, sortComparator }) {
       }
     }
     result.push({
-      name: `${plugin.id} ${plugin.name}`,
+      name: plugin.name,
       author: plugin.authorName,
       ...pluginCounts
     })
