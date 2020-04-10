@@ -7,6 +7,7 @@ const log = require('./log')
 
 sade('figma-plugins-data [handle]', true)
   .describe('Figma plugins meta data and stats')
+  .example('')
   .example('yuanqing')
   .option('-l, --limit', 'Limit the number of plugins returned')
   .example('--limit 10')
@@ -19,7 +20,7 @@ sade('figma-plugins-data [handle]', true)
   .example('--sort likesDelta')
   .example('--sort views')
   .example('--sort viewsDelta')
-  .option('-t, --time', 'Historical data to return, in number of days', 7)
+  .option('-t, --time', 'Number of days of historical data', 7)
   .example('--time 7')
   .action(async function (handle, { limit, sort, time }) {
     try {
