@@ -25,6 +25,7 @@
     "fix": "prettier-standard '{scripts,src}/**/*.js' && prettier --write '.github/**/*.yml'",
     "lint": "standard '{scripts,src}/**/*.js'",
     "scrape": "node scripts/scrape.js",
+    "start": "node src/cli/cli.js",
     "test": "ava --timeout 300s"
   },
   "dependencies": {
