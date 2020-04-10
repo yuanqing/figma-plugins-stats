@@ -8,6 +8,11 @@ async function fetchAuthorId (authorHandle) {
   if (json.error === true) {
     throw new Error('Invalid author handle')
   }
+  if (typeof json.meta.team_profile !== 'undefined') {
+    throw new Error(
+      `Need a user handle; ‘${authorHandle}’ looks like a team handle`
+    )
+  }
   return json.meta.user_profile.id
 }
 
