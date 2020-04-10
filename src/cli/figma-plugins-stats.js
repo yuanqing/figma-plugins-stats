@@ -6,20 +6,18 @@ const fetchAuthorId = require('../fetch-author-id')
 const fetchPluginsData = require('../fetch-plugins-data')
 const sortComparators = require('./utilities/sort-comparators')
 
-async function figmaPluginsStats ({ authorHandle, limit, sort, timeOffset }) {
+async function figmaPluginsStats ({ handle, limit, sort, timeOffset }) {
   const pluginsData = await fetchPluginsData()
   const { stats, startDate } = await fetchScrapedStats(timeOffset)
   const authorId =
-    typeof authorHandle === 'undefined'
-      ? null
-      : await fetchAuthorId(authorHandle)
+    typeof handle === 'undefined' ? null : await fetchAuthorId(handle)
   const plugins = parseData(pluginsData, stats, {
     authorId,
     limit,
     sortComparator: sortComparators[sort]
   })
   if (plugins.length === 0) {
-    throw new Error(`User ‘${authorHandle}’ has no public plugins`)
+    throw new Error(`User ‘${handle}’ has no public plugins`)
   }
   return {
     plugins,
@@ -125,12 +123,15 @@ function computeTotals (plugins, { timeOffset }) {
   for (const key of KEYS) {
     result[key] = {
       count: 0,
-      deltas: Array(timeOffset + 1).fill(0),
+      deltas: [],
       totalDelta: 0
     }
     for (const plugin of plugins) {
       result[key].count += plugin[key].count
       plugin[key].deltas.forEach(function (delta, index) {
+        if (typeof result[key].deltas[index] === 'undefined') {
+          result[key].deltas[index] = 0
+        }
         result[key].deltas[index] += delta
       })
       result[key].totalDelta += plugin[key].totalDelta

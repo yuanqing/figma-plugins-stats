@@ -2,7 +2,7 @@
 
 const indentString = require('indent-string')
 const sade = require('sade')
-const figmaPluginsData = require('./figma-plugins-stats')
+const figmaPluginsStats = require('./figma-plugins-stats')
 const formatDate = require('./utilities/format-date')
 const createTable = require('./utilities/create-table')
 const log = require('./utilities/log')
@@ -14,8 +14,8 @@ sade('figma-plugins-stats [handle]', true)
   .option('-t, --time', 'Set the number of days of historical data to show', 7)
   .action(async function (handle, { limit, sort, time }) {
     try {
-      const { plugins, totals, startDate } = await figmaPluginsData({
-        authorHandle: handle,
+      const { plugins, totals, startDate } = await figmaPluginsStats({
+        handle,
         limit,
         sort,
         timeOffset: time
