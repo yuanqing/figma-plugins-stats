@@ -28,7 +28,7 @@ async function figmaPluginsStats ({ authorHandle, limit, sort, timeOffset }) {
   }
 }
 
-const BASE_URL = 'https://yuanqing.github.io/figma-plugins-data'
+const BASE_URL = 'https://yuanqing.github.io/figma-plugins-stats'
 const EARLIEST_DATE = new Date('2020-04-01')
 
 async function fetchScrapedStats (timeOffset) {
