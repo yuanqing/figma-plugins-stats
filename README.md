@@ -7,9 +7,9 @@
 ```
 $ npx figma-plugins-data tom
 
+  period  7d
   from    2020-04-03 14:04:58 UTC+8
   to      2020-04-10 18:33:14 UTC+8
-  period  7d
 
   no  name                author     installs                likes             views
   1   Themer              Tom Lowry  ▆▆▅█▆▇▇▁ 10,176 ↑209    ▁▁▁▄█▄▁▁ 108 ↑4   ▇▂▃██▇▆▂ 4,842  ↑236

@@ -9,9 +9,9 @@ function formatDate (startDate) {
   const now = new Date()
   const difference = differenceInMilliseconds(now, startDate)
   const rows = [
+    [kleur.gray('period'), ms(difference)],
     [kleur.gray('from'), dateTime({ date: startDate, showTimeZone: true })],
-    [kleur.gray('to'), dateTime({ date: now, showTimeZone: true })],
-    [kleur.gray('period'), ms(difference)]
+    [kleur.gray('to'), dateTime({ date: now, showTimeZone: true })]
   ]
   return table(rows, {
     stringLength: function (string) {
