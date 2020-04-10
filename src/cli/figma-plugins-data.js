@@ -7,17 +7,24 @@ const fetchPluginsData = require('../fetch-plugins-data')
 const sortComparators = require('./sort-comparators')
 
 async function figmaPluginsData ({ authorHandle, limit, sort, timeOffset }) {
-  const plugins = await fetchPluginsData()
+  const pluginsData = await fetchPluginsData()
   const stats = await fetchScrapedStats(timeOffset)
   const authorId =
     typeof authorHandle === 'undefined'
       ? null
       : await fetchAuthorId(authorHandle)
-  return parseData(plugins, stats, {
+  const plugins = parseData(pluginsData, stats, {
     authorId,
     limit,
     sortComparator: sortComparators[sort]
   })
+  if (plugins.length === 0) {
+    throw new Error(`User ‘${authorHandle}’ has no public plugins`)
+  }
+  return {
+    plugins,
+    totals: computeTotals(plugins, { timeOffset })
+  }
 }
 
 const BASE_URL = 'https://yuanqing.github.io/figma-plugins-data'
@@ -58,6 +65,7 @@ const MAP_KEY_TO_INDEX = {
   likeCount: 1,
   viewCount: 2
 }
+const KEYS = Object.keys(MAP_KEY_TO_INDEX)
 
 function parseData (plugins, stats, { authorId, limit, sortComparator }) {
   if (authorId !== null) {
@@ -67,9 +75,8 @@ function parseData (plugins, stats, { authorId, limit, sortComparator }) {
   }
   let result = []
   for (const plugin of plugins) {
-    const keys = Object.keys(MAP_KEY_TO_INDEX)
     const pluginCounts = {}
-    for (const key of keys) {
+    for (const key of KEYS) {
       const index = MAP_KEY_TO_INDEX[key]
       const counts = []
       for (const stat of stats) {
@@ -79,8 +86,7 @@ function parseData (plugins, stats, { authorId, limit, sortComparator }) {
       }
       counts.push(plugin[key])
       pluginCounts[key] = {
-        currentCount: counts[counts.length - 1],
-        counts,
+        count: counts[counts.length - 1],
         deltas: computeDeltas(counts),
         totalDelta: counts[counts.length - 1] - counts[0]
       }
@@ -106,6 +112,25 @@ function computeDeltas (counts) {
     }
     result.push(count - counts[index - 1])
   })
+  return result
+}
+
+function computeTotals (plugins, { timeOffset }) {
+  const result = {}
+  for (const key of KEYS) {
+    result[key] = {
+      count: 0,
+      deltas: Array(timeOffset + 1).fill(0),
+      totalDelta: 0
+    }
+    for (const plugin of plugins) {
+      result[key].count += plugin[key].count
+      plugin[key].deltas.forEach(function (delta, index) {
+        result[key].deltas[index] += delta
+      })
+      result[key].totalDelta += plugin[key].totalDelta
+    }
+  }
   return result
 }
 

@@ -6,19 +6,19 @@ module.exports = {
     return a.author.toLowerCase().localeCompare(b.author.toLowerCase())
   },
   installs: function (a, b) {
-    return b.installCount.currentCount - a.installCount.currentCount
+    return b.installCount.count - a.installCount.count
   },
   installsDelta: function (a, b) {
     return b.installCount.totalDelta - a.installCount.totalDelta
   },
   likes: function (a, b) {
-    return b.likeCount.currentCount - a.likeCount.currentCount
+    return b.likeCount.count - a.likeCount.count
   },
   likesDelta: function (a, b) {
     return b.likeCount.totalDelta - a.likeCount.totalDelta
   },
   views: function (a, b) {
-    return b.viewCount.currentCount - a.viewCount.currentCount
+    return b.viewCount.count - a.viewCount.count
   },
   viewsDelta: function (a, b) {
     return b.viewCount.totalDelta - a.viewCount.totalDelta

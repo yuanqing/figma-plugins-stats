@@ -8,11 +8,27 @@ const log = require('./log')
 
 sade('figma-plugins-data [handle]', true)
   .describe('Figma plugins meta data and stats')
+  .option('-l, --limit', 'Limit the number of plugins returned')
+  .option('-s, --sort', 'Sort order', 'installs')
+  .option('-t, --time', 'Number of days of historical data', 7)
+  .action(async function (handle, { limit, sort, time }) {
+    try {
+      const { plugins, totals } = await figmaPluginsData({
+        authorHandle: handle,
+        limit,
+        sort,
+        timeOffset: time
+      })
+      const string = formatData(plugins, totals)
+      console.log(`\n${indentString(string, 2)}\n`)
+    } catch (error) {
+      log.error(error.message)
+      process.exit(1)
+    }
+  })
   .example('')
   .example('yuanqing')
-  .option('-l, --limit', 'Limit the number of plugins returned')
   .example('--limit 10')
-  .option('-s, --sort', 'Sort order', 'installs')
   .example('--sort name')
   .example('--sort author')
   .example('--sort installs')
@@ -21,24 +37,5 @@ sade('figma-plugins-data [handle]', true)
   .example('--sort likesDelta')
   .example('--sort views')
   .example('--sort viewsDelta')
-  .option('-t, --time', 'Number of days of historical data', 7)
   .example('--time 7')
-  .action(async function (handle, { limit, sort, time }) {
-    try {
-      const data = await figmaPluginsData({
-        authorHandle: handle,
-        limit,
-        sort,
-        timeOffset: time
-      })
-      if (data.length === 0) {
-        throw new Error(`User ‘${handle}’ has no public plugins`)
-      }
-      const string = formatData(data)
-      console.log(`\n${indentString(string, 2)}\n`)
-    } catch (error) {
-      log.error(error.message)
-      process.exit(1)
-    }
-  })
   .parse(process.argv)
