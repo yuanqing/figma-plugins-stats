@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const indentString = require('indent-string')
 const sade = require('sade')
 const figmaPluginsData = require('./figma-plugins-data')
 const formatData = require('./format-data')
@@ -30,7 +31,8 @@ sade('figma-plugins-data [handle]', true)
         sort,
         timeOffset: time
       })
-      console.log(formatData(data, { timeOffset: time }))
+      const string = formatData(data, { timeOffset: time })
+      console.log(`\n${indentString(string, 2)}\n`)
     } catch (error) {
       log.error(error.message)
       process.exit(1)
