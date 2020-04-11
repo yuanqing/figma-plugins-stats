@@ -24,7 +24,7 @@ async function figmaPluginsStats ({ handle, limit, sort, timeOffset }) {
     sortComparator: sortComparators[sort]
   })
   if (plugins.length === 0) {
-    throw new Error(`User ‘${handle}’ has no public plugins`)
+    throw new Error(`User \`${handle}\` has no public plugins`)
   }
   return {
     plugins,
