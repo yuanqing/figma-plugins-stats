@@ -1,6 +1,6 @@
 {
   "name": "figma-plugins-stats",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A CLI to get live and historical stats for your Figma plugins",
   "keywords": [
     "figma",
