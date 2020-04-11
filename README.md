@@ -43,6 +43,7 @@ In the above example, for the plugin `Clean Document`, we see that:
 By default, the historical time period is 7 days.
 
 - Set this using the `--time` flag. For example: `--time 7d`, `--time 2w`.
+- *N.B.* Historical data goes back to 1 April 2020.
 
 By default, plugins are sorted in descending order of the change in install count.
 
@@ -120,7 +121,7 @@ $ yarn global add figma-plugins-stats
 
 ## Implementation details
 
-A snapshot of the stats for all Figma plugins is taken everyday at approximately 6 AM UTC+0, [via a GitHub action](.github/workflows/scrape.yml). (The first snapshot was taken on 1 April 2020.) The day’s snapshot is committed as a JSON file and [served on GitHub pages](tree/gh-pages). Historical data is backed by these snapshots.
+A snapshot of the stats for all Figma plugins is taken everyday at approximately 6 AM UTC+0, [via a GitHub action](.github/workflows/scrape.yml). (The first snapshot was taken on 1 April 2020.) The day’s snapshot is committed as a JSON file and [served on GitHub pages](https://github.com/yuanqing/figma-plugins-stats/tree/gh-pages). Historical data is backed by these snapshots.
 
 ## License
 
