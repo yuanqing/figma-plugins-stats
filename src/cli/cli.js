@@ -14,9 +14,9 @@ sade('figma-plugins-stats [handle]', true)
   .option('-s, --sort', 'Set the sort order', 'installs-delta')
   .option('-t, --time', 'Set the period of historical data to show', '7d')
   .action(async function (handle, { limit, sort, time: timeOffset }) {
+    const spinner = ora('Fetching stats')
+    spinner.color = 'gray'
     try {
-      const spinner = ora('Fetching stats')
-      spinner.color = 'gray'
       spinner.start()
       const { plugins, totals, startDate, endDate } = await figmaPluginsStats({
         handle,
@@ -33,6 +33,7 @@ sade('figma-plugins-stats [handle]', true)
       console.log(indentString(table, 2))
       console.log()
     } catch (error) {
+      spinner.stop()
       log.error(error.message)
       process.exit(1)
     }
