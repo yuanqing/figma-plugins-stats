@@ -3,21 +3,20 @@ const dateTime = require('date-time')
 const kleur = require('kleur')
 const ms = require('ms')
 const stripAnsi = require('strip-ansi')
-const table = require('text-table')
+const textTable = require('text-table')
 
-function formatDate (startDate) {
-  const now = new Date()
-  const difference = differenceInMilliseconds(now, startDate)
+function createDateTable (startDate, endDate) {
+  const difference = differenceInMilliseconds(endDate, startDate)
   const rows = [
     [kleur.gray('period'), ms(difference)],
     [kleur.gray('from'), dateTime({ date: startDate, showTimeZone: true })],
-    [kleur.gray('to'), dateTime({ date: now, showTimeZone: true })]
+    [kleur.gray('to'), dateTime({ date: endDate, showTimeZone: true })]
   ]
-  return table(rows, {
+  return textTable(rows, {
     stringLength: function (string) {
       return stripAnsi(string).length
     }
   })
 }
 
-module.exports = formatDate
+module.exports = createDateTable

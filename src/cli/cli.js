@@ -4,32 +4,32 @@ const indentString = require('indent-string')
 const ora = require('ora')
 const sade = require('sade')
 const figmaPluginsStats = require('./figma-plugins-stats')
-const formatDate = require('./utilities/format-date')
-const createTable = require('./utilities/create-table')
+const createDateTable = require('./utilities/create-date-table')
+const createPluginsTable = require('./utilities/create-plugins-table')
 const log = require('./utilities/log')
 
 sade('figma-plugins-stats [handle]', true)
   .describe('Figma plugins meta data and stats')
   .option('-l, --limit', 'Limit the number of plugins returned')
-  .option('-s, --sort', 'Set the sort order', 'installs')
-  .option('-t, --time', 'Set the number of days of historical data to show', 7)
-  .action(async function (handle, { limit, sort, time }) {
+  .option('-s, --sort', 'Set the sort order', 'installs-delta')
+  .option('-t, --time', 'Set the period of historical data to show', '7d')
+  .action(async function (handle, { limit, sort, time: timeOffset }) {
     try {
       const spinner = ora('Fetching stats')
       spinner.color = 'gray'
       spinner.start()
-      const { plugins, totals, startDate } = await figmaPluginsStats({
+      const { plugins, totals, startDate, endDate } = await figmaPluginsStats({
         handle,
         limit,
         sort,
-        timeOffset: time
+        timeOffset
       })
       spinner.stop()
       console.log()
-      const date = formatDate(startDate)
+      const date = createDateTable(startDate, endDate)
       console.log(indentString(date, 2))
       console.log()
-      const table = createTable({ plugins, totals })
+      const table = createPluginsTable({ plugins, totals })
       console.log(indentString(table, 2))
       console.log()
     } catch (error) {
@@ -43,10 +43,10 @@ sade('figma-plugins-stats [handle]', true)
   .example('--sort name')
   .example('--sort author')
   .example('--sort installs')
-  .example('--sort installsDelta')
+  .example('--sort installs-delta')
   .example('--sort likes')
-  .example('--sort likesDelta')
+  .example('--sort likes-delta')
   .example('--sort views')
-  .example('--sort viewsDelta')
-  .example('--time 7')
+  .example('--sort views-delta')
+  .example('--time 1d')
   .parse(process.argv)

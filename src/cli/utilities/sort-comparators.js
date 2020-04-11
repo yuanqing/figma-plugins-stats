@@ -8,19 +8,19 @@ module.exports = {
   installs: function (a, b) {
     return b.installCount.count - a.installCount.count
   },
-  installsDelta: function (a, b) {
+  'installs-delta': function (a, b) {
     return b.installCount.totalDelta - a.installCount.totalDelta
   },
   likes: function (a, b) {
     return b.likeCount.count - a.likeCount.count
   },
-  likesDelta: function (a, b) {
+  'likes-delta': function (a, b) {
     return b.likeCount.totalDelta - a.likeCount.totalDelta
   },
   views: function (a, b) {
     return b.viewCount.count - a.viewCount.count
   },
-  viewsDelta: function (a, b) {
+  'views-delta': function (a, b) {
     return b.viewCount.totalDelta - a.viewCount.totalDelta
   }
 }

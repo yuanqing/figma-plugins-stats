@@ -1,11 +1,11 @@
 const kleur = require('kleur')
 const sparkly = require('sparkly')
 const stripAnsi = require('strip-ansi')
-const table = require('text-table')
+const textTable = require('text-table')
 
 const keys = ['installCount', 'likeCount', 'viewCount']
 
-function createTable ({ plugins, totals }) {
+function createPluginsTable ({ plugins, totals }) {
   const headers = [
     kleur.gray('no'),
     kleur.gray(' name'),
@@ -50,7 +50,7 @@ function createTable ({ plugins, totals }) {
   ]
   rows.push([])
   rows.push(totalRow)
-  return table(rows, {
+  return textTable(rows, {
     hsep: ' ',
     stringLength: function (string) {
       return stripAnsi(string).length
@@ -68,4 +68,4 @@ function formatDelta (delta) {
   return ''
 }
 
-module.exports = createTable
+module.exports = createPluginsTable
