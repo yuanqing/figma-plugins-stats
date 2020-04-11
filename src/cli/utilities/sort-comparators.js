@@ -16,11 +16,12 @@ module.exports = {
   },
   'likes-delta': function (a, b) {
     return b.likeCount.totalDelta - a.likeCount.totalDelta
-  },
-  views: function (a, b) {
-    return b.viewCount.count - a.viewCount.count
-  },
-  'views-delta': function (a, b) {
-    return b.viewCount.totalDelta - a.viewCount.totalDelta
   }
+  // FIXME
+  // views: function (a, b) {
+  //   return b.viewCount.count - a.viewCount.count
+  // },
+  // 'views-delta': function (a, b) {
+  //   return b.viewCount.totalDelta - a.viewCount.totalDelta
+  // }
 }

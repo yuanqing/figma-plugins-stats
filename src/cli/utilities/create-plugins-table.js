@@ -3,7 +3,12 @@ const sparkly = require('sparkly')
 const stripAnsi = require('strip-ansi')
 const textTable = require('text-table')
 
-const keys = ['installCount', 'likeCount', 'viewCount']
+const keys = [
+  'installCount',
+  'likeCount'
+  // FIXME
+  // 'viewCount'
+]
 
 function createPluginsTable ({ plugins, totals }) {
   const headers = [
@@ -13,9 +18,10 @@ function createPluginsTable ({ plugins, totals }) {
     kleur.gray(' installs'),
     '',
     kleur.gray(' likes'),
-    '',
-    kleur.gray(' views'),
     ''
+    // FIXME
+    // kleur.gray(' views'),
+    // ''
   ]
   const rows = [headers]
   plugins.forEach(function (plugin, index) {
@@ -42,11 +48,12 @@ function createPluginsTable ({ plugins, totals }) {
     ` ${sparkly(
       totals.likeCount.deltas
     )} ${totals.likeCount.count.toLocaleString()}`,
-    formatDelta(totals.likeCount.totalDelta),
-    ` ${sparkly(
-      totals.viewCount.deltas
-    )} ${totals.viewCount.count.toLocaleString()}`,
-    formatDelta(totals.viewCount.totalDelta)
+    formatDelta(totals.likeCount.totalDelta)
+    // FIXME
+    // ` ${sparkly(
+    //   totals.viewCount.deltas
+    // )} ${totals.viewCount.count.toLocaleString()}`,
+    // formatDelta(totals.viewCount.totalDelta)
   ]
   rows.push([])
   rows.push(totalRow)
