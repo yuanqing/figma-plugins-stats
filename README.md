@@ -9,7 +9,8 @@
 To get the live plugin stats for a particular plugin author, specify the author’s [profile handle](https://help.figma.com/hc/en-us/articles/360038510833--Create-a-Community-Profile#Creator_profiles):
 
 ```
-$ npx figma-plugins-stats yuanqing
+$ npm install --global figma-plugins-stats
+$ figma-plugins-stats yuanqing
 
   period  7d
   from    2020-04-04 14:05:31 UTC+8
@@ -52,13 +53,13 @@ By default, plugins are sorted in descending order of the change in install coun
 Omit the profile handle to get the stats for *all* Figma plugins:
 
 ```
-$ npx figma-plugins-stats | less -r
+$ figma-plugins-stats | less -r
 ```
 
 ## CLI
 
 ```
-$ npx figma-plugins-stats --help
+$ figma-plugins-stats --help
 
   Description
     A CLI to get live and historical stats for your Figma plugins
@@ -115,8 +116,8 @@ Fetches the latest meta data and stats of all public Figma plugins. Each object 
 
 ## Installation
 
-```sh
-$ yarn global add figma-plugins-stats
+```
+$ npm install --global figma-plugins-stats
 ```
 
 ## Implementation details
