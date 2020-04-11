@@ -8,20 +8,20 @@
 $ npx figma-plugins-stats tom
 
   period  7d
-  from    2020-04-03 14:04:58 UTC+8
-  to      2020-04-10 18:33:14 UTC+8
+  from    2020-04-04 14:05:31 UTC+8
+  to      2020-04-11 14:52:32 UTC+8
 
-  no  name                author     installs                likes             views
-  1   Themer              Tom Lowry  ▆▆▅█▆▇▇▁ 10,176 ↑209    ▁▁▁▄█▄▁▁ 108 ↑4   ▇▂▃██▇▆▂ 4,842  ↑236
-  2   Sorter              Tom Lowry  ▆▄▅▆▄█▅▁ 3,730  ↑75     ▁▁▁█▁▁▁▁ 38  ↑1   ▃▃▂▃▂█▄▁ 668    ↑26
-  3   Component Page      Tom Lowry  ▆█▅██▅▅▂ 3,211  ↑114    ▁▁▁█▁▄▁▁ 51  ↑3   ▃▂▃▂█▄▄▁ 1,563  ↑87
-  4   Send to Top         Tom Lowry  ██▃▆▆█▆▁ 1,820  ↑16     ▁▁▁█▁█▁▁ 4   ↑2   ▁▁▁▁▁▁█▁ 42     ↑1
-  5   Status Annotations  Tom Lowry  █▃▂█▄▄▃▁ 982    ↑558    █▃▃▄▄▃▁▁ 83  ↑41  █▄▂▄▂▂▁▁ 1,957  ↑1,032
-  6   Edit in place       Tom Lowry  ▂▄▂██▆▂▁ 871    ↑16     ▁▁▁▁▁▁▁▁ 16       ▁█▁██▁▁▁ 227    ↑3
-  7   Nester              Tom Lowry  ▃▂▁▂█▁▃▁ 559    ↑19     ▁▁▁██▁▁▁ 30  ↑2   ▇▃▃▁█▄▆▁ 971    ↑25
-  8   Dice                Tom Lowry  ▄▃▁███▅▁ 236    ↑44     ▁▁▄▁▁█▁▁ 12  ↑3   ▂▃▅█▆▃▆▁ 302    ↑38
+  no  name                author     installs              likes             views
+  1   Status Annotations  Tom Lowry  ▃▂█▄▅▃▂▁ 999    ↑421  ▆▆██▇▂▁▁ 83  ↑26  ▇▄█▄▄▂▄▁ 2,066  ↑753
+  2   Themer              Tom Lowry  ▆▅█▆▇▇▅▁ 10,193 ↑199  ▁▁▄█▄▁▁▁ 108 ↑4   ▁▂▅▄▄▃█▁ 4,934  ↑289
+  3   Component Page      Tom Lowry  █▅██▅▅▆▁ 3,222  ↑110  ▁▁█▁▄▁▁▁ 51  ↑3   ▂▃▂█▄▄▁▁ 1,564  ↑79
+  4   Sorter              Tom Lowry  ▄▅▆▄█▅▇▁ 3,743  ↑76   ▁▁█▁▁▁▁▁ 38  ↑1   ▂▁▂▁▄▂█▁ 684    ↑39
+  5   Dice                Tom Lowry  ▂▁▆▆▆▄█▁ 251    ↑55   ▁▃▁▁▆▁█▁ 15  ↑6   ▃▅█▆▃▆▂▁ 304    ↑38
+  6   Nester              Tom Lowry  ▂▁▂█▁▃▅▁ 564    ↑21   ▁▁██▁▁▁▁ 30  ↑2   ▁▁▁▂▁▂█▂ 1,007  ↑55
+  7   Edit in place       Tom Lowry  ▄▂██▆▂▆▁ 874    ↑18   ▁▁▁▁▁▁█▁ 17  ↑1   ▁▁▁▁▁▁█▁ 238    ↑14
+  8   Send to Top         Tom Lowry  █▃▆▆█▆▆▁ 1,822  ↑15   ▁▁█▁█▁▁▁ 4   ↑2   ▁▁▁▁▁██▁ 43     ↑2
 
-                          totals     █▄▃█▆▆▅▁ 21,585 ↑1,051  █▃▃▇▅▆▁▁ 342 ↑56  █▄▂▅▄▃▂▁ 10,572 ↑1,448
+                          totals     ▄▃█▆▆▅▄▁ 21,668 ↑915  ▃▄█▆▇▁▃▁ 346 ↑45  ▆▄█▆▅▄█▂ 10,840 ↑1,269
 
 ```
 
@@ -38,8 +38,8 @@ $ npx figma-plugins-stats --help
 
   Options
     -l, --limit      Limit the number of plugins returned
-    -s, --sort       Set the sort order  (default installs)
-    -t, --time       Set the number of days of historical data to show  (default 7)
+    -s, --sort       Set the sort order  (default installs-delta)
+    -t, --time       Set the period of historical data to show  (default 7d)
     -v, --version    Displays current version
     -h, --help       Displays this message
 
@@ -50,12 +50,12 @@ $ npx figma-plugins-stats --help
     $ figma-plugins-stats --sort name
     $ figma-plugins-stats --sort author
     $ figma-plugins-stats --sort installs
-    $ figma-plugins-stats --sort installsDelta
+    $ figma-plugins-stats --sort installs-delta
     $ figma-plugins-stats --sort likes
-    $ figma-plugins-stats --sort likesDelta
+    $ figma-plugins-stats --sort likes-delta
     $ figma-plugins-stats --sort views
-    $ figma-plugins-stats --sort viewsDelta
-    $ figma-plugins-stats --time 7
+    $ figma-plugins-stats --sort views-delta
+    $ figma-plugins-stats --time 1d
 
 ```
 
