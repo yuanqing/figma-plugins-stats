@@ -8,7 +8,7 @@ const parseData = require('./utilities/parse-data')
 async function figmaPluginsStats ({ handle, limit, sort, timeOffset }) {
   const timeOffsetInMilliseconds = ms(timeOffset)
   if (timeOffsetInMilliseconds < ms('1d')) {
-    throw new Error('Time offset must be at least `1d`')
+    throw new Error('Time offset must be at least 1 day (`1d`)')
   }
   const endDate = new Date()
   const pluginsData = await fetchPluginsData()
