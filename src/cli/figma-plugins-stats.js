@@ -68,7 +68,6 @@ const MAP_KEY_TO_INDEX = {
   likeCount: 1,
   viewCount: 2
 }
-const KEYS = Object.keys(MAP_KEY_TO_INDEX)
 
 function parseData (plugins, stats, { authorId, limit, sortComparator }) {
   if (authorId !== null) {
@@ -79,7 +78,7 @@ function parseData (plugins, stats, { authorId, limit, sortComparator }) {
   let result = []
   for (const plugin of plugins) {
     const pluginCounts = {}
-    for (const key of KEYS) {
+    for (const key of Object.keys(MAP_KEY_TO_INDEX)) {
       const index = MAP_KEY_TO_INDEX[key]
       const counts = []
       for (const stat of stats) {
@@ -118,9 +117,9 @@ function computeDeltas (counts) {
   return result
 }
 
-function computeTotals (plugins, { timeOffset }) {
+function computeTotals (plugins) {
   const result = {}
-  for (const key of KEYS) {
+  for (const key of Object.keys(MAP_KEY_TO_INDEX)) {
     result[key] = {
       count: 0,
       deltas: [],
