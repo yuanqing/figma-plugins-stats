@@ -39,7 +39,7 @@ sade('figma-plugins-stats [handle]', true)
       process.exit(1)
     }
   })
-  .example('')
+  .example('| less -r')
   .example('yuanqing')
   .example('--limit 10')
   .example('--sort author')
