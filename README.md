@@ -1,28 +1,57 @@
 # figma-plugins-stats [![npm Version](https://img.shields.io/npm/v/figma-plugins-stats?cacheSeconds=1800)](https://www.npmjs.com/package/figma-plugins-stats) [![build](https://github.com/yuanqing/figma-plugins-stats/workflows/build/badge.svg)](https://github.com/yuanqing/figma-plugins-stats/actions?query=workflow%3Abuild)
 
-> [Figma plugins](https://www.figma.com/community) meta data and stats
+> A CLI to get live and historical stats for your [Figma plugins](https://www.figma.com/community)
 
 ## Quick start
 
+*Requires [Node.js](https://nodejs.org/).*
+
+To get the live plugin stats for a particular plugin author, specify the author’s [profile handle](https://help.figma.com/hc/en-us/articles/360038510833--Create-a-Community-Profile#Creator_profiles):
+
 ```
-$ npx figma-plugins-stats tom
+$ npx figma-plugins-stats yuanqing
 
   period  7d
   from    2020-04-04 14:05:31 UTC+8
-  to      2020-04-11 14:52:32 UTC+8
+  to      2020-04-11 21:56:59 UTC+8
 
-  no  name                author     installs              likes             views
-  1   Status Annotations  Tom Lowry  ▃▂█▄▅▃▂▁ 999    ↑421  ▆▆██▇▂▁▁ 83  ↑26  ▇▄█▄▄▂▄▁ 2,066  ↑753
-  2   Themer              Tom Lowry  ▆▅█▆▇▇▅▁ 10,193 ↑199  ▁▁▄█▄▁▁▁ 108 ↑4   ▁▂▅▄▄▃█▁ 4,934  ↑289
-  3   Component Page      Tom Lowry  █▅██▅▅▆▁ 3,222  ↑110  ▁▁█▁▄▁▁▁ 51  ↑3   ▂▃▂█▄▄▁▁ 1,564  ↑79
-  4   Sorter              Tom Lowry  ▄▅▆▄█▅▇▁ 3,743  ↑76   ▁▁█▁▁▁▁▁ 38  ↑1   ▂▁▂▁▄▂█▁ 684    ↑39
-  5   Dice                Tom Lowry  ▂▁▆▆▆▄█▁ 251    ↑55   ▁▃▁▁▆▁█▁ 15  ↑6   ▃▅█▆▃▆▂▁ 304    ↑38
-  6   Nester              Tom Lowry  ▂▁▂█▁▃▅▁ 564    ↑21   ▁▁██▁▁▁▁ 30  ↑2   ▁▁▁▂▁▂█▂ 1,007  ↑55
-  7   Edit in place       Tom Lowry  ▄▂██▆▂▆▁ 874    ↑18   ▁▁▁▁▁▁█▁ 17  ↑1   ▁▁▁▁▁▁█▁ 238    ↑14
-  8   Send to Top         Tom Lowry  █▃▆▆█▆▆▁ 1,822  ↑15   ▁▁█▁█▁▁▁ 4   ↑2   ▁▁▁▁▁██▁ 43     ↑2
+  no  name                       author         installs                likes
+  1   Clean Document             Yuan Qing Lim  ▅▆████▇▂ 22,113 ↑1,068  ▃██▃▆▆▆▁ 296 ↑14
+  2   Insert Big Image           Yuan Qing Lim  ▅▅█▇▅▄█▄ 1,105  ↑88     ▁█▁▁█▁█▁ 34  ↑3
+  3   Organize Layers            Yuan Qing Lim  ▂▄█▄▅█▆▃ 988    ↑47     ▁▁▁▁▁██▁ 34  ↑2
+  4   Component Utilities        Yuan Qing Lim  ▄▅█▄█▄▅▂ 1,058  ↑40     ▁▁▁█▁▁█▁ 32  ↑2
+  5   Sort Layers                Yuan Qing Lim  █▂▆▁▅▇█▄ 1,543  ↑40     ▁▁▁█▁▁▁▁ 19  ↑1
+  6   Select Layers              Yuan Qing Lim  ▄▃▇▇█▁█▄ 638    ↑34     ▁█▁██▁▁▁ 22  ↑3
+  7   Language Tester            Yuan Qing Lim  ▅▁▂▄█▁▅▁ 1,039  ↑27     ▁▁█▁▁▁▁▁ 17  ↑1
+  8   Set Layer Size             Yuan Qing Lim  █▂█▂▅▄█▄ 140    ↑24     █▁▁▁▁█▁▁ 11  ↑2
+  9   Format Currency            Yuan Qing Lim  █▂▃▂▆▂▃▃ 595    ↑19     ▁▁▁▁▁▁▁▁ 11
+  10  Draw Mask Under Selection  Yuan Qing Lim  █▄█▂▁▁▆▆ 231    ↑17     ▁▁▁▁▁▁▁▁ 7
+  11  Draw Slice Over Selection  Yuan Qing Lim  █▄▂▂▂▁▆▄ 581    ↑14     ▁▁▁▁▁▁▁▁ 3
+  12  Distribute Layers          Yuan Qing Lim  █▂▂▁▁▂▅▄ 706    ↑12     ▁▁▁▁▁▁▁▁ 6
+  13  Move Layers                Yuan Qing Lim  ██▂▁▁▁▄▄ 688    ↑11     ▁▁▁▁▁▁▁▁ 6
 
-                          totals     ▄▃█▆▆▅▄▁ 21,668 ↑915  ▃▄█▆▇▁▃▁ 346 ↑45  ▆▄█▆▅▄█▂ 10,840 ↑1,269
+                                 totals         ▆▆█████▃ 31,425 ↑1,441  ▄█▇▇▇▇█▁ 498 ↑28
 
+```
+
+In the above example, for the plugin `Clean Document`, we see that:
+
+- `22,113` is the current install count.
+- `1,068` is the increase in install count over the 7-day period.
+- The [sparkline](https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR) (`▅▆████▇▂`) shows the trend in the increase in install count over the period.
+
+By default, the historical time period is 7 days.
+
+- Set this using the `--time` flag. For example: `--time 7d`, `--time 2w`.
+
+By default, plugins are sorted in descending order of the change in install count.
+
+- Set this using the `--sort` flag. For example: `--sort author`, `--sort name`, `--sort installs`, `--sort installs-delta`, `--sort likes`, `--sort likes-delta`.
+
+Omit the profile handle to get the stats for *all* Figma plugins:
+
+```
+$ npx figma-plugins-stats | less -r
 ```
 
 ## CLI
@@ -31,7 +60,7 @@ $ npx figma-plugins-stats tom
 $ npx figma-plugins-stats --help
 
   Description
-    Figma plugins meta data and stats
+    A CLI to get live and historical stats for your Figma plugins
 
   Usage
     $ figma-plugins-stats [handle] [options]
@@ -47,15 +76,14 @@ $ npx figma-plugins-stats --help
     $ figma-plugins-stats
     $ figma-plugins-stats yuanqing
     $ figma-plugins-stats --limit 10
-    $ figma-plugins-stats --sort name
     $ figma-plugins-stats --sort author
+    $ figma-plugins-stats --sort name
     $ figma-plugins-stats --sort installs
     $ figma-plugins-stats --sort installs-delta
     $ figma-plugins-stats --sort likes
     $ figma-plugins-stats --sort likes-delta
-    $ figma-plugins-stats --sort views
-    $ figma-plugins-stats --sort views-delta
-    $ figma-plugins-stats --time 1d
+    $ figma-plugins-stats --time 7d
+    $ figma-plugins-stats --time 2w
 
 ```
 
@@ -65,9 +93,9 @@ $ npx figma-plugins-stats --help
 const { fetchAuthorId, fetchPluginsData } = require('figma-plugins-stats')
 ```
 
-#### const authorId = await fetchAuthorId([authorHandle])
+#### const authorId = await fetchAuthorId([profileHandle])
 
-Fetches the `authorId` of the given `authorHandle`.
+Fetches the `authorId` of the given `profileHandle`.
 
 #### const pluginsData = await fetchPluginsData()
 
@@ -89,6 +117,10 @@ Fetches the latest meta data and stats of all public Figma plugins. Each object 
 ```sh
 $ yarn global add figma-plugins-stats
 ```
+
+## Implementation details
+
+A snapshot of the stats for all Figma plugins is taken everyday at approximately 6 AM UTC+0, [via a GitHub action](.github/workflows/scrape.yml). (The first snapshot was taken on 1 April 2020.) The day’s snapshot is committed as a JSON file and [served on GitHub pages](tree/gh-pages). Historical data is backed by these snapshots.
 
 ## License
 
