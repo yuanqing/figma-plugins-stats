@@ -9,8 +9,7 @@
 To get the plugin stats for a particular plugin author, enter `npx figma-plugins-stats` followed by the author’s [profile handle](https://help.figma.com/hc/en-us/articles/360038510833--Create-a-Community-Profile#Creator_profiles):
 
 ```
-$ npm install --global figma-plugins-stats
-$ figma-plugins-stats yuanqing
+$ npx figma-plugins-stats yuanqing
 
   period  7d
   from    2020-04-04 14:05:31 UTC+8
@@ -46,20 +45,20 @@ By default, the historical time period is 7 days.
 - Set this using the `--time` flag. For example: `--time 7d`, `--time 2w`.
 - *N.B.* Historical data goes back to 1 April 2020 at the most.
 
-By default, plugins are sorted in descending order of the change in install count.
+By default, plugins are sorted in descending order of the increase in install count.
 
 - Set this using the `--sort` flag. For example: `--sort author`, `--sort name`, `--sort installs`, `--sort installs-delta`, `--sort likes`, `--sort likes-delta`.
 
 Omit the profile handle to get the stats for *all* Figma plugins:
 
 ```
-$ figma-plugins-stats | less -r
+$ npx figma-plugins-stats | less -r
 ```
 
 ## CLI
 
 ```
-$ figma-plugins-stats --help
+$ npx figma-plugins-stats --help
 
   Description
     A CLI to get live and historical stats for your Figma plugins
