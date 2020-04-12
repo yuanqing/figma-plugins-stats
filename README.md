@@ -6,7 +6,7 @@
 
 *Requires [Node.js](https://nodejs.org/).*
 
-To get the live plugin stats for a particular plugin author, specify the author’s [profile handle](https://help.figma.com/hc/en-us/articles/360038510833--Create-a-Community-Profile#Creator_profiles):
+To get the plugin stats for a particular plugin author, enter `npx figma-plugins-stats` followed by the author’s [profile handle](https://help.figma.com/hc/en-us/articles/360038510833--Create-a-Community-Profile#Creator_profiles):
 
 ```
 $ npm install --global figma-plugins-stats
@@ -122,7 +122,7 @@ $ npm install --global figma-plugins-stats
 
 ## Implementation details
 
-A snapshot of the stats for all Figma plugins is taken everyday at approximately 6 AM UTC+0, [via a GitHub action](.github/workflows/scrape.yml). (The first snapshot was taken on 1 April 2020.) The day’s snapshot is committed as a JSON file and [served on GitHub pages](https://github.com/yuanqing/figma-plugins-stats/tree/gh-pages). Historical data is backed by these snapshots.
+A snapshot of the stats for all Figma plugins is taken everyday at approximately 6 AM UTC+0, [via a GitHub action](.github/workflows/scrape.yml). (The first snapshot was taken on 1 April 2020.) Each snapshot is stored as a JSON file and [served on GitHub pages](https://github.com/yuanqing/figma-plugins-stats/tree/gh-pages). Historical data surfaced in the CLI is backed by these snapshots.
 
 ## License
 
