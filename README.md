@@ -98,20 +98,22 @@ const { fetchAuthorId, fetchPluginsData } = require('figma-plugins-stats')
 
 Fetches the `authorId` of the given `profileHandle`.
 
-#### const pluginsData = await fetchPluginsData()
+#### const { plugins, orgsAndTeams } = await fetchPluginsData()
 
-Fetches the latest meta data and stats of all public Figma plugins. Each object literal in the `pluginsData` array has the following keys:
+Fetches the latest meta data and stats of all public Figma plugins.
 
-- `id`
-- `name`
-- `description`
-- `lastUpdateDate`
-- `tags`
-- `authorId`
-- `authorName`
-- `installCount`
-- `likeCount`
-- `viewCount`
+- `plugins` is an array of objects that each have the following keys:
+    - `id`
+    - `name`
+    - `description`
+    - `lastUpdateDate`
+    - `tags`
+    - `authorId`
+    - `authorName`
+    - `installCount`
+    - `likeCount`
+    - `viewCount`
+- `orgsAndTeams` is an object that maps the `id` of each organization or team to an array of plugin `id`.
 
 ## Installation
 
