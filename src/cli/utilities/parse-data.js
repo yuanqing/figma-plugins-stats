@@ -4,12 +4,8 @@ const MAP_KEY_TO_INDEX = {
   viewCount: 2
 }
 
-function parseData (plugins, stats, { authorId, limit, sortComparator }) {
-  if (authorId !== null) {
-    plugins = plugins.filter(function (plugin) {
-      return plugin.authorId === authorId
-    })
-  }
+function parseData (pluginsData, stats, { authorId, limit, sortComparator }) {
+  const plugins = filterByAuthorId(pluginsData, authorId)
   let result = []
   for (const plugin of plugins) {
     const pluginCounts = {}
@@ -38,11 +34,26 @@ function parseData (plugins, stats, { authorId, limit, sortComparator }) {
   if (typeof limit !== 'undefined' && limit !== true) {
     result = result.slice(0, limit)
   }
-  // console.log(JSON.stringify(result, null, 4))
   return {
     plugins: result,
     totals: computeTotals(result)
   }
+}
+
+function filterByAuthorId ({ plugins, orgsAndTeams }, authorId) {
+  if (authorId === null) {
+    return plugins
+  }
+  if (typeof orgsAndTeams[authorId] !== 'undefined') {
+    return orgsAndTeams[authorId].map(function (id) {
+      return plugins.find(function (plugin) {
+        return plugin.id === id
+      })
+    })
+  }
+  return plugins.filter(function (plugin) {
+    return plugin.authorId === authorId
+  })
 }
 
 function computeDeltas (counts) {

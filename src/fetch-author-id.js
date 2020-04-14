@@ -8,10 +8,17 @@ async function fetchAuthorId (profileHandle) {
   if (json.error === true) {
     throw new Error('Invalid user handle')
   }
-  if (typeof json.meta.team_profile !== 'undefined') {
-    throw new Error(`Need a user handle; \`${profileHandle}\` is a team handle`)
+  const meta = json.meta
+  if (typeof meta.org_profile !== 'undefined') {
+    return meta.org_profile.id
   }
-  return json.meta.user_profile.id
+  if (typeof meta.team_profile !== 'undefined') {
+    return meta.team_profile.id
+  }
+  if (typeof meta.user_profile !== 'undefined') {
+    return meta.user_profile.id
+  }
+  throw new Error('Invalid user handle')
 }
 
 module.exports = fetchAuthorId

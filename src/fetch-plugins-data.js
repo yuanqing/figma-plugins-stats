@@ -31,10 +31,19 @@ function deduplicate (data) {
 }
 
 function parseData (data) {
-  const result = []
+  const plugins = []
+  const orgsAndTeams = {}
   for (const item of data) {
     const metaData = Object.values(item.versions)[0]
-    result.push({
+    if (item.author_org !== null || item.author_team !== null) {
+      const id =
+        item.author_org !== null ? item.author_org.id : item.author_team.id
+      if (typeof orgsAndTeams[id] === 'undefined') {
+        orgsAndTeams[id] = []
+      }
+      orgsAndTeams[id].push(item.id)
+    }
+    plugins.push({
       id: item.id,
       name: metaData.name,
       description: metaData.description,
@@ -47,9 +56,12 @@ function parseData (data) {
       viewCount: item.view_count
     })
   }
-  return result.sort(function (a, b) {
-    return a.name.localeCompare(b.name)
-  })
+  return {
+    plugins: plugins.sort(function (a, b) {
+      return a.name.localeCompare(b.name)
+    }),
+    orgsAndTeams
+  }
 }
 
 module.exports = fetchPluginsData
