@@ -19,7 +19,7 @@
   "bin": {
     "figma-plugins-stats": "src/cli/cli.js"
   },
-  "main": "src/index.js",
+  "main": "src/fetch-plugins-data.js",
   "scripts": {
     "clean": "rm -rf '*.log' data",
     "fix": "prettier-standard '{scripts,src}/**/*.js' && prettier --write '*.json' '.github/**/*.yml'",

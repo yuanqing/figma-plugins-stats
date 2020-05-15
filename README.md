@@ -91,7 +91,7 @@ $ npx figma-plugins-stats --help
 ## API
 
 ```js
-const { fetchAuthorId, fetchPluginsData } = require('figma-plugins-stats')
+const fetchPluginsData = require('figma-plugins-stats')
 ```
 
 #### const plugins = await fetchPluginsData()
