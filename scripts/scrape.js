@@ -8,8 +8,8 @@ const STATS_DATA_FILE_NAME = 'stats.json'
 
 async function main () {
   const date = new Date().toISOString()
-  const { plugins, orgsAndTeams } = await fetchPluginsData()
-  await writeFile({ date, plugins, orgsAndTeams }, META_DATA_FILE_NAME)
+  const plugins = await fetchPluginsData()
+  await writeFile({ date, plugins }, META_DATA_FILE_NAME)
   const stats = extractStats(plugins)
   await writeFile({ date, stats }, STATS_DATA_FILE_NAME)
   await writeFile({ date, stats }, `${date.slice(0, 10)}.json`)

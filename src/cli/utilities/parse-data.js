@@ -4,8 +4,11 @@ const MAP_KEY_TO_INDEX = {
   viewCount: 2
 }
 
-function parseData (pluginsData, stats, { authorId, limit, sortComparator }) {
-  const plugins = filterByAuthorId(pluginsData, authorId)
+function parseData (pluginsData, stats, { handle, limit, sortComparator }) {
+  const plugins =
+    typeof handle === 'undefined'
+      ? pluginsData
+      : filterPluginsByHandle(pluginsData, handle)
   let result = []
   for (const plugin of plugins) {
     const pluginCounts = {}
@@ -26,7 +29,7 @@ function parseData (pluginsData, stats, { authorId, limit, sortComparator }) {
     }
     result.push({
       name: plugin.name,
-      author: plugin.authorName,
+      author: plugin.publisherName,
       ...pluginCounts
     })
   }
@@ -40,19 +43,9 @@ function parseData (pluginsData, stats, { authorId, limit, sortComparator }) {
   }
 }
 
-function filterByAuthorId ({ plugins, orgsAndTeams }, authorId) {
-  if (authorId === null) {
-    return plugins
-  }
-  if (typeof orgsAndTeams[authorId] !== 'undefined') {
-    return orgsAndTeams[authorId].map(function (id) {
-      return plugins.find(function (plugin) {
-        return plugin.id === id
-      })
-    })
-  }
-  return plugins.filter(function (plugin) {
-    return plugin.authorId === authorId
+function filterPluginsByHandle (plugins, handle) {
+  plugins.filter(function (plugin) {
+    return plugin.publisherHandle === handle
   })
 }
 

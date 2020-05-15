@@ -1,5 +1,4 @@
 const ms = require('ms')
-const fetchAuthorId = require('../fetch-author-id')
 const fetchPluginsData = require('../fetch-plugins-data')
 const fetchStats = require('../fetch-stats')
 const sortComparators = require('./utilities/sort-comparators')
@@ -16,10 +15,8 @@ async function figmaPluginsStats ({ handle, limit, sort, timeOffset }) {
     endDate,
     timeOffsetInMilliseconds
   )
-  const authorId =
-    typeof handle === 'undefined' ? null : await fetchAuthorId(handle)
   const { plugins, totals } = parseData(pluginsData, stats, {
-    authorId,
+    handle,
     limit,
     sortComparator: sortComparators[sort]
   })

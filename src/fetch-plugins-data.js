@@ -32,36 +32,25 @@ function deduplicate (data) {
 
 function parseData (data) {
   const plugins = []
-  const orgsAndTeams = {}
   for (const item of data) {
     const metaData = Object.values(item.versions)[0]
-    if (item.author_org !== null || item.author_team !== null) {
-      const id =
-        item.author_org !== null ? item.author_org.id : item.author_team.id
-      if (typeof orgsAndTeams[id] === 'undefined') {
-        orgsAndTeams[id] = []
-      }
-      orgsAndTeams[id].push(item.id)
-    }
     plugins.push({
       id: item.id,
       name: metaData.name,
       description: metaData.description,
       lastUpdateDate: metaData.created_at,
       tags: [].concat(item.tags).sort(),
-      authorId: item.creator.id,
-      authorName: item.creator.handle,
+      publisherHandle: item.publisher.profile_handle,
+      publisherId: item.publisher.id,
+      publisherName: item.publisher.name,
       installCount: item.install_count,
       likeCount: item.like_count,
       viewCount: item.view_count
     })
   }
-  return {
-    plugins: plugins.sort(function (a, b) {
-      return a.name.localeCompare(b.name)
-    }),
-    orgsAndTeams
-  }
+  return plugins.sort(function (a, b) {
+    return a.name.localeCompare(b.name)
+  })
 }
 
 module.exports = fetchPluginsData
