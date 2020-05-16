@@ -1,6 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
-const fetchFigmaPluginsStats = require('../src/fetch-figma-plugins-stats')
+const fetchFigmaPluginsStats = require('../src/fetch/fetch-figma-plugins-stats')
 
 const DATA_DIRECTORY_NAME = 'data'
 const META_DATA_FILE_NAME = 'index.json'
