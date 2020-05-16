@@ -29,29 +29,28 @@
     "test": "ava --timeout 300s"
   },
   "dependencies": {
-    "date-fns": "^2.11.1",
+    "date-fns": "^2.13.0",
     "date-time": "^3.1.0",
-    "emoji-regex": "^8.0.0",
     "fs-extra": "^9.0.0",
     "indent-string": "^4.0.0",
     "isomorphic-unfetch": "^3.0.0",
     "kleur": "^3.0.3",
-    "mem": "^6.0.1",
+    "mem": "^6.1.0",
     "ms": "^2.1.2",
     "npmlog": "^4.1.2",
-    "ora": "^4.0.3",
+    "ora": "^4.0.4",
     "sade": "^1.7.3",
     "sparkly": "^5.0.0",
     "strip-ansi": "^6.0.0",
     "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "ava": "^3.5.2",
-    "husky": "^4.2.3",
-    "lint-staged": "^10.0.8",
-    "prettier": "^2.0.2",
-    "prettier-standard": "^16.2.1",
-    "standard": "^14.3.3"
+    "ava": "^3.8.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "prettier": "^2.0.5",
+    "prettier-standard": "^16.3.0",
+    "standard": "^14.3.4"
   },
   "husky": {
     "hooks": {
