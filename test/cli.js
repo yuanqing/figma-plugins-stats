@@ -1,6 +1,6 @@
-const test = require('ava')
-const path = require('path')
 const childProcess = require('child_process')
+const path = require('path')
+const test = require('ava')
 
 test('runs and exits without error', async function (t) {
   t.timeout(30000)
