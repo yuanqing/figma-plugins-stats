@@ -6,7 +6,7 @@
 
 *Requires [Node.js](https://nodejs.org/).*
 
-To get the plugin stats for a particular plugin author, enter `npx figma-plugins-stats` followed by the author’s [profile handle](https://help.figma.com/hc/en-us/articles/360038510833--Create-a-Community-Profile#Creator_profiles):
+To get the plugin stats for a particular plugin author, enter `npx figma-plugins-stats` followed by a [profile handle](https://help.figma.com/hc/en-us/articles/360038510833--Create-a-Community-Profile#Creator_profiles):
 
 ```
 $ npx figma-plugins-stats yuanqing
@@ -15,7 +15,7 @@ $ npx figma-plugins-stats yuanqing
   from    2020-04-04 14:05:31 UTC+8
   to      2020-04-11 21:56:59 UTC+8
 
-  no  name                       author         installs                likes
+  no  name                       publisher      installs                likes
   1   Clean Document             Yuan Qing Lim  ▅▆████▇▂ 22,113 ↑1,068  ▃██▃▆▆▆▁ 296 ↑14
   2   Insert Big Image           Yuan Qing Lim  ▅▅█▇▅▄█▄ 1,105  ↑88     ▁█▁▁█▁█▁ 34  ↑3
   3   Organize Layers            Yuan Qing Lim  ▂▄█▄▅█▆▃ 988    ↑47     ▁▁▁▁▁██▁ 34  ↑2
@@ -47,7 +47,7 @@ By default, the historical time period is 7 days.
 
 By default, plugins are sorted in descending order of the increase in install count.
 
-- Set this using the `--sort` flag. For example: `--sort author`, `--sort name`, `--sort installs`, `--sort installs-delta`, `--sort likes`, `--sort likes-delta`.
+- Set this using the `--sort` flag. For example: `--sort publisher`, `--sort name`, `--sort installs`, `--sort installs-delta`, `--sort likes`, `--sort likes-delta`.
 
 Omit the profile handle to get the stats for *all* Figma plugins:
 
@@ -77,8 +77,8 @@ $ npx figma-plugins-stats --help
     $ figma-plugins-stats | less -r
     $ figma-plugins-stats yuanqing
     $ figma-plugins-stats --limit 10
-    $ figma-plugins-stats --sort author
     $ figma-plugins-stats --sort name
+    $ figma-plugins-stats --sort publisher
     $ figma-plugins-stats --sort installs
     $ figma-plugins-stats --sort installs-delta
     $ figma-plugins-stats --sort likes
@@ -91,10 +91,10 @@ $ npx figma-plugins-stats --help
 ## API
 
 ```js
-const fetchPluginsData = require('figma-plugins-stats')
+const fetchFigmaPluginsStats = require('figma-plugins-stats')
 ```
 
-#### const plugins = await fetchPluginsData()
+#### const plugins = await fetchFigmaPluginsStats()
 
 Fetches the latest meta data and stats of all public Figma plugins.
 

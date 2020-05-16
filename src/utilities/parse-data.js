@@ -29,7 +29,7 @@ function parseData (pluginsData, stats, { handle, limit, sortComparator }) {
     }
     result.push({
       name: plugin.name,
-      author: plugin.publisherName,
+      publisher: plugin.publisherName,
       ...pluginCounts
     })
   }
@@ -44,7 +44,7 @@ function parseData (pluginsData, stats, { handle, limit, sortComparator }) {
 }
 
 function filterPluginsByHandle (plugins, handle) {
-  plugins.filter(function (plugin) {
+  return plugins.filter(function (plugin) {
     return plugin.publisherHandle === handle
   })
 }

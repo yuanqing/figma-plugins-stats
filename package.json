@@ -17,15 +17,15 @@
     "src"
   ],
   "bin": {
-    "figma-plugins-stats": "src/cli/cli.js"
+    "figma-plugins-stats": "src/cli.js"
   },
-  "main": "src/fetch-plugins-data.js",
+  "main": "src/index.js",
   "scripts": {
     "clean": "rm -rf '*.log' data",
     "fix": "prettier-standard '{scripts,src}/**/*.js' && prettier --write '*.json' '.github/**/*.yml'",
     "lint": "standard '{scripts,src}/**/*.js'",
     "scrape": "node scripts/scrape.js",
-    "start": "node src/cli/cli.js",
+    "start": "node src/cli.js",
     "test": "ava --timeout 300s"
   },
   "dependencies": {

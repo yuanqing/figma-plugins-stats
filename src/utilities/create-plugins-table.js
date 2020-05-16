@@ -14,7 +14,7 @@ function createPluginsTable ({ plugins, totals }) {
   const headers = [
     kleur.gray('no'),
     kleur.gray(' name'),
-    kleur.gray(' author'),
+    kleur.gray(' publisher'),
     kleur.gray(' installs'),
     '',
     kleur.gray(' likes'),
@@ -28,7 +28,7 @@ function createPluginsTable ({ plugins, totals }) {
     const row = [
       index + 1,
       ` ${plugin.name.trim()}`,
-      ` ${plugin.author.trim()}`
+      ` ${plugin.publisher.trim()}`
     ]
     for (const key of keys) {
       const count = plugin[key]

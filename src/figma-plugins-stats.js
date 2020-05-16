@@ -1,6 +1,6 @@
 const ms = require('ms')
-const fetchPluginsData = require('../fetch-plugins-data')
-const fetchStats = require('../fetch-stats')
+const fetchFigmaPluginsStats = require('./fetch/fetch-figma-plugins-stats')
+const fetchHistoricalStats = require('./fetch/fetch-historical-stats')
 const sortComparators = require('./utilities/sort-comparators')
 const parseData = require('./utilities/parse-data')
 
@@ -10,8 +10,8 @@ async function figmaPluginsStats ({ handle, limit, sort, timeOffset }) {
     throw new Error('Time offset must be at least 1 day (`1d`)')
   }
   const endDate = new Date()
-  const pluginsData = await fetchPluginsData()
-  const { startDate, stats } = await fetchStats(
+  const pluginsData = await fetchFigmaPluginsStats()
+  const { startDate, stats } = await fetchHistoricalStats(
     endDate,
     timeOffsetInMilliseconds
   )

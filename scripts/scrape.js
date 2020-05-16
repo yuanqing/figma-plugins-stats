@@ -1,6 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
-const fetchPluginsData = require('../src/fetch-plugins-data')
+const fetchFigmaPluginsStats = require('../src/fetch-figma-plugins-stats')
 
 const DATA_DIRECTORY_NAME = 'data'
 const META_DATA_FILE_NAME = 'index.json'
@@ -8,7 +8,7 @@ const STATS_DATA_FILE_NAME = 'stats.json'
 
 async function main () {
   const date = new Date().toISOString()
-  const plugins = await fetchPluginsData()
+  const plugins = await fetchFigmaPluginsStats()
   await writeFile({ date, plugins }, META_DATA_FILE_NAME)
   const stats = extractStats(plugins)
   await writeFile({ date, stats }, STATS_DATA_FILE_NAME)

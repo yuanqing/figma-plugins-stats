@@ -2,8 +2,8 @@ module.exports = {
   name: function (a, b) {
     return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
   },
-  author: function (a, b) {
-    return a.author.toLowerCase().localeCompare(b.author.toLowerCase())
+  publisher: function (a, b) {
+    return a.publisher.toLowerCase().localeCompare(b.publisher.toLowerCase())
   },
   installs: function (a, b) {
     return b.installCount.count - a.installCount.count

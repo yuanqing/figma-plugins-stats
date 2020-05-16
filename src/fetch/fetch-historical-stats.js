@@ -5,9 +5,9 @@ const isSameDay = require('date-fns/isSameDay')
 const parseISO = require('date-fns/parseISO')
 const subMilliseconds = require('date-fns/subMilliseconds')
 const ms = require('ms')
-const fetch = require('./utilities/fetch')
+const fetch = require('./fetch')
 
-async function fetchStats (endDate, timeOffsetInMilliseconds) {
+async function fetchHistoricalStats (endDate, timeOffsetInMilliseconds) {
   const lastStats = await fetchStatsForDate(null)
   const dates = computeDates(lastStats.date, endDate, timeOffsetInMilliseconds)
   const promises = []
@@ -64,4 +64,4 @@ function computeDates (lastStatsDate, endDate, timeOffsetInMilliseconds) {
   return dates
 }
 
-module.exports = fetchStats
+module.exports = fetchHistoricalStats

@@ -1,6 +1,6 @@
-const fetch = require('./utilities/fetch')
+const fetch = require('./fetch')
 
-async function fetchPluginsData () {
+async function fetchFigmaPluginsStats () {
   const data = await fetchRawData()
   return parseData(data)
 }
@@ -53,4 +53,4 @@ function parseData (data) {
   })
 }
 
-module.exports = fetchPluginsData
+module.exports = fetchFigmaPluginsStats
