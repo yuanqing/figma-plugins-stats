@@ -29,26 +29,26 @@
     "test": "ava --timeout 300s"
   },
   "dependencies": {
-    "date-fns": "^2.13.0",
+    "date-fns": "^2.15.0",
     "date-time": "^3.1.0",
-    "fs-extra": "^9.0.0",
+    "fs-extra": "^9.0.1",
     "indent-string": "^4.0.0",
     "isomorphic-unfetch": "^3.0.0",
-    "kleur": "^3.0.3",
+    "kleur": "^4.1.1",
     "ms": "^2.1.2",
     "npmlog": "^4.1.2",
-    "ora": "^4.0.4",
+    "ora": "^5.0.0",
     "sade": "^1.7.3",
     "sparkly": "^5.0.0",
     "strip-ansi": "^6.0.0",
     "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "ava": "^3.8.2",
+    "ava": "^3.11.1",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.2",
+    "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
-    "prettier-standard": "^16.3.0",
+    "prettier-standard": "^16.4.1",
     "standard": "^14.3.4"
   },
   "husky": {
