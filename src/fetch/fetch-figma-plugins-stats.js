@@ -5,12 +5,30 @@ async function fetchFigmaPluginsStats () {
   return parseData(data)
 }
 
-const url = 'https://www.figma.com/api/plugins/top'
-
 async function fetchRawData () {
-  const response = await fetch(url)
-  const json = await response.json()
-  return json.meta
+  let result = []
+  let url =
+    'https://www.figma.com/api/plugins/browse?sort_by=popular&sort_order=desc&resource_type=plugins&page_size=50'
+  while (typeof url !== 'undefined') {
+    const response = await fetch(url)
+    const json = await response.json()
+    result = result.concat(json.meta.plugins)
+    url = json.pagination.next_page
+  }
+  return deduplicate(result)
+}
+
+function deduplicate (data) {
+  const result = []
+  const ids = {}
+  for (const item of data) {
+    const id = item.id
+    if (ids[id] !== true) {
+      result.push(item)
+      ids[id] = true
+    }
+  }
+  return result
 }
 
 function parseData (data) {
