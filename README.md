@@ -103,13 +103,11 @@ Returns a Promise for an array of objects that each have the following keys:
 - `name`
 - `description`
 - `lastUpdateDate`
-- `tags`
 - `publisherHandle`
 - `publisherId`
 - `publisherName`
 - `installCount`
 - `likeCount`
-- `viewCount`
 
 ## Installation
 
