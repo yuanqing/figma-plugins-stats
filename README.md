@@ -126,32 +126,32 @@ A snapshot of the stats for all Figma plugins is taken everyday at approximately
 
 *Replace `<ID>` with your Figma plugin ID*
 
-[![Installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/installs.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/installs.json)
+[![installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/installs.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/installs.json)
 
 ```md
-![Installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/<ID>/installs.json)
+![installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/<ID>/installs.json)
 ```
 
-[![Likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/likes.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/likes.json)
+[![likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/likes.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/likes.json)
 
 ```md
-![Likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/<ID>/likes.json)
+![likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/<ID>/likes.json)
 ```
 
 ### Publisher stats
 
 *Replace `<PUBLISHER>` with your Figma profile handle*
 
-[![Total installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/installs.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/installs.json)
+[![total installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/installs.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/installs.json)
 
 ```md
-![Total installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/<PUBLISHER>/installs.json)
+![total installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/<PUBLISHER>/installs.json)
 ```
 
-[![Total likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/likes.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/likes.json)
+[![total likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/likes.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/likes.json)
 
 ```md
-![Total likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/<PUBLISHER>/likes.json)
+![total likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/<PUBLISHER>/likes.json)
 ```
 
 ## License
