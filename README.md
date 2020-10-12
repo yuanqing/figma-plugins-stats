@@ -6,7 +6,7 @@
 
 *Requires [Node.js](https://nodejs.org/).*
 
-To get the plugin stats for a particular plugin author, enter `npx figma-plugins-stats` followed by a [profile handle](https://help.figma.com/hc/en-us/articles/360038510833--Create-a-Community-Profile#Creator_profiles):
+To get the plugin stats for a particular plugin publisher, enter `npx figma-plugins-stats` followed by a [profile handle](https://help.figma.com/hc/en-us/articles/360038510833--Create-a-Community-Profile#Creator_profiles):
 
 ```
 $ npx figma-plugins-stats yuanqing
@@ -99,6 +99,7 @@ const fetchFigmaPluginsStats = require('figma-plugins-stats')
 Fetches the latest meta data and stats of all public Figma plugins.
 
 Returns a Promise for an array of objects that each have the following keys:
+
 - `id`
 - `name`
 - `description`
@@ -118,6 +119,40 @@ $ npm install --global figma-plugins-stats
 ## Implementation details
 
 A snapshot of the stats for all Figma plugins is taken everyday at approximately 6 AM UTC+0, [via a GitHub action](.github/workflows/scrape.yml). (The first snapshot was taken on 1 April 2020.) Each snapshot is stored as a JSON file and [served on GitHub pages](https://github.com/yuanqing/figma-plugins-stats/tree/gh-pages). Historical data surfaced in the CLI is backed by these snapshots.
+
+## Shields.io badges
+
+### Plugin stats
+
+*Replace `<ID>` with your Figma plugin ID*
+
+[![Installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/installs.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/installs.json)
+
+```md
+![Installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/<ID>/installs.json)
+```
+
+[![Likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/likes.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/likes.json)
+
+```md
+![Likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/<ID>/likes.json)
+```
+
+### Publisher stats
+
+*Replace `<PUBLISHER>` with your Figma profile handle*
+
+[![Total installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/installs.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/installs.json)
+
+```md
+![Total installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/<PUBLISHER>/installs.json)
+```
+
+[![Total likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/likes.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/likes.json)
+
+```md
+![Total likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/<PUBLISHER>/likes.json)
+```
 
 ## License
 
