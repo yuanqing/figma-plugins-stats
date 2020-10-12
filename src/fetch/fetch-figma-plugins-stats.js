@@ -40,7 +40,6 @@ function parseData (data) {
       name: metaData.name,
       description: metaData.description,
       lastUpdateDate: metaData.created_at,
-      tags: [].concat(item.tags).sort(),
       publisherHandle: item.publisher.profile_handle,
       publisherId: item.publisher.id,
       publisherName: item.publisher.name,
