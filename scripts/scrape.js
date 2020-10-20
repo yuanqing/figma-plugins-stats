@@ -107,6 +107,10 @@ async function writeFile (data, fileName) {
 function formatNumber (number) {
   return Intl.NumberFormat('en-US', {
     compactDisplay: 'short',
-    notation: 'compact'
-  }).format(number)
+    notation: 'compact',
+    minimumFractionDigits: number > 999 && number < 100000 ? 1 : 0,
+    maximumFractionDigits: 1
+  })
+    .format(number)
+    .replace('.0', '')
 }
