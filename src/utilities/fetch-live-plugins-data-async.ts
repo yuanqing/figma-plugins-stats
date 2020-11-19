@@ -1,16 +1,17 @@
-const fetch = require('./fetch')
+import { PluginData, RawPluginData } from '../types'
+import { fetchAsync } from './fetch-async'
 
-async function fetchFigmaPluginsStats () {
-  const data = await fetchRawData()
-  return parseData(data)
+export async function fetchLivePluginsDataAsync(): Promise<Array<PluginData>> {
+  const data = await fetchRawPluginsDataAsync()
+  return parseRawPluginsData(data)
 }
 
-async function fetchRawData () {
-  let result = []
+async function fetchRawPluginsDataAsync(): Promise<Array<RawPluginData>> {
+  let result: any = []
   let url =
     'https://www.figma.com/api/plugins/browse?sort_by=popular&sort_order=desc&resource_type=plugins&page_size=50'
   while (typeof url !== 'undefined') {
-    const response = await fetch(url)
+    const response = await fetchAsync(url)
     const json = await response.json()
     result = result.concat(json.meta.plugins)
     url = json.pagination.next_page
@@ -18,9 +19,9 @@ async function fetchRawData () {
   return deduplicate(result)
 }
 
-function deduplicate (data) {
-  const result = []
-  const ids = {}
+function deduplicate(data: Array<RawPluginData>): Array<RawPluginData> {
+  const result: Array<RawPluginData> = []
+  const ids: { [id: string]: boolean } = {}
   for (const item of data) {
     const id = item.id
     if (ids[id] !== true) {
@@ -31,26 +32,24 @@ function deduplicate (data) {
   return result
 }
 
-function parseData (data) {
-  const plugins = []
+function parseRawPluginsData(data: Array<RawPluginData>): Array<PluginData> {
+  const plugins: Array<PluginData> = []
   for (const item of data) {
     const metaData = Object.values(item.versions)[0]
     plugins.push({
-      id: item.id,
-      name: metaData.name,
       description: metaData.description,
+      id: item.id,
+      installCount: item.install_count,
       lastUpdateDate: metaData.created_at,
+      likeCount: item.like_count,
+      name: metaData.name,
       publisherHandle: item.publisher.profile_handle,
       publisherId: item.publisher.id,
       publisherName: item.publisher.name,
-      installCount: item.install_count,
-      likeCount: item.like_count,
       viewCount: item.view_count
     })
   }
-  return plugins.sort(function (a, b) {
+  return plugins.sort(function (a: PluginData, b: PluginData) {
     return a.name.localeCompare(b.name)
   })
 }
-
-module.exports = fetchFigmaPluginsStats

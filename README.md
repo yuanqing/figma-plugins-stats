@@ -12,33 +12,35 @@ To get the plugin stats for a particular plugin publisher, enter `npx figma-plug
 $ npx figma-plugins-stats yuanqing
 
   period  7d
-  from    2020-04-04 14:05:31 UTC+8
-  to      2020-04-11 21:56:59 UTC+8
+  from    2020-11-12 14:13:17 UTC+8
+  to      2020-11-19 08:21:43 UTC+8
 
-  no  name                       publisher      installs                likes
-  1   Clean Document             Yuan Qing Lim  ▅▆████▇▂ 22,113 ↑1,068  ▃██▃▆▆▆▁ 296 ↑14
-  2   Insert Big Image           Yuan Qing Lim  ▅▅█▇▅▄█▄ 1,105  ↑88     ▁█▁▁█▁█▁ 34  ↑3
-  3   Organize Layers            Yuan Qing Lim  ▂▄█▄▅█▆▃ 988    ↑47     ▁▁▁▁▁██▁ 34  ↑2
-  4   Component Utilities        Yuan Qing Lim  ▄▅█▄█▄▅▂ 1,058  ↑40     ▁▁▁█▁▁█▁ 32  ↑2
-  5   Sort Layers                Yuan Qing Lim  █▂▆▁▅▇█▄ 1,543  ↑40     ▁▁▁█▁▁▁▁ 19  ↑1
-  6   Select Layers              Yuan Qing Lim  ▄▃▇▇█▁█▄ 638    ↑34     ▁█▁██▁▁▁ 22  ↑3
-  7   Language Tester            Yuan Qing Lim  ▅▁▂▄█▁▅▁ 1,039  ↑27     ▁▁█▁▁▁▁▁ 17  ↑1
-  8   Set Layer Size             Yuan Qing Lim  █▂█▂▅▄█▄ 140    ↑24     █▁▁▁▁█▁▁ 11  ↑2
-  9   Format Currency            Yuan Qing Lim  █▂▃▂▆▂▃▃ 595    ↑19     ▁▁▁▁▁▁▁▁ 11
-  10  Draw Mask Under Selection  Yuan Qing Lim  █▄█▂▁▁▆▆ 231    ↑17     ▁▁▁▁▁▁▁▁ 7
-  11  Draw Slice Over Selection  Yuan Qing Lim  █▄▂▂▂▁▆▄ 581    ↑14     ▁▁▁▁▁▁▁▁ 3
-  12  Distribute Layers          Yuan Qing Lim  █▂▂▁▁▂▅▄ 706    ↑12     ▁▁▁▁▁▁▁▁ 6
-  13  Move Layers                Yuan Qing Lim  ██▂▁▁▁▄▄ 688    ↑11     ▁▁▁▁▁▁▁▁ 6
+  no  name                         publisher      installs             likes           views
+  1   Clean Document               Yuan Qing Lim  ▅▅▃▄██▄ 31,439 ↑267  █▄▁▁▁▁▁ 426 ↑3  ▆▆▃▅██▇ 359,142 ↑11,570
+  2   Insert Big Image             Yuan Qing Lim  ▅▅▃▄█▆▃ 5,624  ↑252  ▁▁▁▁█▁▁ 113 ↑1  █▇▆███▅ 134,382 ↑8,516
+  3   Organize Layers              Yuan Qing Lim  ▇▃▄▄▃█▅ 3,040  ↑66   ▁▁▁▁▁▁▁ 68      █▅▄▅▇█▆ 70,165  ↑3,528
+  4   Select Layers                Yuan Qing Lim  ▆▃▃▃▅█▇ 2,109  ↑65   ▁▁▁▁▁█▁ 54  ↑1  ▅▄▃▆██▇ 50,572  ↑2,899
+  5   Sort Layers                  Yuan Qing Lim  ▅▄▁▂▃█▂ 2,889  ↑45   ▁▁▁▁▁▁▁ 45      ▆▄▂▄▅█▅ 47,351  ↑2,902
+  6   Component Utilities          Yuan Qing Lim  ██▁▄▇▄█ 2,340  ↑39   ▁▁▁▁▁▁█ 69  ↑1  █▇▃▅▅██ 93,114  ↑4,122
+  7   Flatten Selection to Bitmap  Yuan Qing Lim  ▅▅▃▁▅██ 1,036  ↑28   ▁▁▁▁▁▁▁ 34      █▅▄▇▄▆▆ 57,440  ↑2,378
+  8   Text Utilities               Yuan Qing Lim  ▄█▁▁▂▄▄ 64     ↑11   ▁▁▁▁▁▁▁ 6       ██▆██▇▇ 9,708   ↑2,011
+  9   Distribute Layers            Yuan Qing Lim  ▄▄▂▂▁█▁ 999    ↑10   ▁▁▁▁▁▁▁ 11      ▆▄▆█▆█▄ 21,091  ↑1,491
+  10  Language Tester              Yuan Qing Lim  ▆▃▁▁▆█▆ 1,540  ↑10   ▁▁▁▁▁▁▁ 22      █▇█▇▅▅▅ 31,563  ↑1,541
+  11  Format Currency              Yuan Qing Lim  ██▁▄▄▄█ 979    ↑9    ▁▁▁▁▁▁▁ 14      ▇▇▄█▇▄█ 23,505  ↑1,465
+  12  Draw Mask Under Selection    Yuan Qing Lim  ▄▄▄▁▁▁█ 422    ↑5    ▁▁▁▁▁▁▁ 8       █▃██▅▄█ 14,657  ↑1,266
+  13  Set Layer Size               Yuan Qing Lim  █▄▁▁█▁▁ 393    ↑4    ▁▁▁▁▁▁▁ 17      █▆▅█▄▅▆ 21,665  ↑1,563
+  14  Draw Slice Over Selection    Yuan Qing Lim  ▁█▁▁▁█▁ 797    ↑2    ▁▁▁▁▁▁▁ 6       █▄███▇▇ 14,377  ↑1,097
+  15  Move Layers                  Yuan Qing Lim  █▁▁▁█▁▁ 971    ↑2    ▁▁▁▁▁▁▁ 7       █▄█▇▆▄▅ 20,308  ↑1,256
 
-                                 totals         ▆▆█████▃ 31,425 ↑1,441  ▄█▇▇▇▇█▁ 498 ↑28
+                                   totals         ▆▆▃▄██▅ 54,642 ↑815  █▄▁▁▄▄▄ 900 ↑6  █▆▅▇██▇ 969,040 ↑47,605
 
 ```
 
 In the above example, for the plugin `Clean Document`, we see that:
 
-- `22,113` is the current install count.
-- `1,068` is the increase in install count over the 7-day period.
-- The [sparkline](https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR) (`▅▆████▇▂`) shows the trend in the increase in install count over the period.
+- `31,439` is the current install count.
+- `267` is the increase in install count over the 7-day period.
+- The [sparkline](https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR) (`▅▅▃▄██▄`) shows the trend in the increase in install count over the period.
 
 By default, the historical time period is 7 days.
 
@@ -57,23 +59,28 @@ $ npx figma-plugins-stats | less -r
 
 ## CLI
 
-```
+```sh
 $ npx figma-plugins-stats --help
 
-  Description
-    A CLI to get live and historical stats for your Figma plugins
+  A CLI to get live and historical stats for your Figma plugins.
 
-  Usage
-    $ figma-plugins-stats [handle] [options]
+  Usage:
+    $ figma-plugins-stats <handle> [options]
 
-  Options
-    -l, --limit      Limit the number of plugins returned
-    -s, --sort       Set the sort order  (default installs-delta)
-    -t, --time       Set the period of historical data to show  (default 7d)
-    -v, --version    Displays current version
-    -h, --help       Displays this message
+  Arguments:
+    <handle>  A Figma profile handle.
 
-  Examples
+  Options:
+    -h, --help     Print this message.
+    -l, --limit    Limit the number of plugins returned.
+    -s, --sort     Set the sort order. One of 'name', 'publisher', 'installs',
+                   'installs-delta', 'likes', or 'likes-delta'. Defaults to
+                   'installs-delta'.
+    -t, --time     Set the period of historical data to show. Defaults to
+                   '7d'.
+    -v, --version  Print the version.
+
+  Examples:
     $ figma-plugins-stats | less -r
     $ figma-plugins-stats yuanqing
     $ figma-plugins-stats --limit 10
@@ -83,6 +90,8 @@ $ npx figma-plugins-stats --help
     $ figma-plugins-stats --sort installs-delta
     $ figma-plugins-stats --sort likes
     $ figma-plugins-stats --sort likes-delta
+    $ figma-plugins-stats --sort views
+    $ figma-plugins-stats --sort views-delta
     $ figma-plugins-stats --time 7d
     $ figma-plugins-stats --time 2w
 
@@ -91,10 +100,10 @@ $ npx figma-plugins-stats --help
 ## API
 
 ```js
-const fetchFigmaPluginsStats = require('figma-plugins-stats')
+const fetchLivePluginsDataAsync = require('figma-plugins-stats')
 ```
 
-#### const plugins = await fetchFigmaPluginsStats()
+#### const plugins = await fetchLivePluginsDataAsync()
 
 Fetches the latest meta data and stats of all public Figma plugins.
 
@@ -109,18 +118,17 @@ Returns a Promise for an array of objects that each have the following keys:
 - `publisherName`
 - `installCount`
 - `likeCount`
+- `viewCount`
 
 ## Installation
 
-```
+```sh
 $ npm install --global figma-plugins-stats
 ```
 
-## Implementation details
-
-A snapshot of the stats for all Figma plugins is taken everyday at approximately 6 AM UTC+0, [via a GitHub action](.github/workflows/scrape.yml). (The first snapshot was taken on 1 April 2020.) Each snapshot is stored as a JSON file and [served on GitHub pages](https://github.com/yuanqing/figma-plugins-stats/tree/gh-pages). Historical data surfaced in the CLI is backed by these snapshots.
-
 ## Shields.io badges
+
+Figma Plugins Stats also provides a JSON API for displaying stats as [Shields.io](https://shields.io/) badges on a GitHub `README` page.
 
 ### Plugin stats
 
@@ -154,6 +162,10 @@ A snapshot of the stats for all Figma plugins is taken everyday at approximately
 ![total likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/<PUBLISHER>/likes.json)
 ```
 
+## Implementation details
+
+A snapshot of the stats for all Figma plugins is taken everyday at approximately 6 AM UTC+0, [via a GitHub action](.github/workflows/scrape.yml). (The first snapshot was taken on 1 April 2020.) Each snapshot is stored as a JSON file and [served on GitHub pages](https://github.com/yuanqing/figma-plugins-stats/tree/gh-pages). Historical data surfaced in the CLI is backed by these snapshots.
+
 ## License
 
-[MIT](LICENSE.md)
+[MIT](/LICENSE.md)

@@ -1,4 +1,8 @@
 .DS_Store
-*.log
+.nyc_output/
+build/
+coverage/
 data/
+lib/
 node_modules/
+*.log

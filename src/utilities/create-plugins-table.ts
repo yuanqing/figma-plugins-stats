@@ -1,16 +1,18 @@
-const kleur = require('kleur')
-const sparkly = require('sparkly')
-const stripAnsi = require('strip-ansi')
-const textTable = require('text-table')
+import kleur from 'kleur'
+import sparkly from 'sparkly'
+import stripAnsi from 'strip-ansi'
+import textTable from 'text-table'
 
-const keys = [
-  'installCount',
-  'likeCount'
-  // FIXME
-  // 'viewCount'
-]
+import { Plugin } from '../types'
+import { pluginStatsKeys } from './plugins-stats-keys'
 
-function createPluginsTable ({ plugins, totals }) {
+export function createPluginsTable({
+  plugins,
+  totals
+}: {
+  plugins: Array<Plugin>
+  totals: any
+}): string {
   const headers = [
     kleur.gray('no'),
     kleur.gray(' name'),
@@ -18,19 +20,18 @@ function createPluginsTable ({ plugins, totals }) {
     kleur.gray(' installs'),
     '',
     kleur.gray(' likes'),
+    '',
+    kleur.gray(' views'),
     ''
-    // FIXME
-    // kleur.gray(' views'),
-    // ''
   ]
   const rows = [headers]
-  plugins.forEach(function (plugin, index) {
-    const row = [
-      index + 1,
+  plugins.forEach(function (plugin: Plugin, index: number) {
+    const row: Array<string> = [
+      `${index + 1}`,
       ` ${plugin.name.trim()}`,
       ` ${plugin.publisher.trim()}`
     ]
-    for (const key of keys) {
+    for (const key of pluginStatsKeys) {
       const count = plugin[key]
       row.push(` ${sparkly(count.deltas)} ${count.count.toLocaleString()}`)
       row.push(formatDelta(count.totalDelta))
@@ -48,24 +49,23 @@ function createPluginsTable ({ plugins, totals }) {
     ` ${sparkly(
       totals.likeCount.deltas
     )} ${totals.likeCount.count.toLocaleString()}`,
-    formatDelta(totals.likeCount.totalDelta)
-    // FIXME
-    // ` ${sparkly(
-    //   totals.viewCount.deltas
-    // )} ${totals.viewCount.count.toLocaleString()}`,
-    // formatDelta(totals.viewCount.totalDelta)
+    formatDelta(totals.likeCount.totalDelta),
+    ` ${sparkly(
+      totals.viewCount.deltas
+    )} ${totals.viewCount.count.toLocaleString()}`,
+    formatDelta(totals.viewCount.totalDelta)
   ]
   rows.push([])
   rows.push(totalRow)
   return textTable(rows, {
     hsep: ' ',
-    stringLength: function (string) {
+    stringLength: function (string: any) {
       return stripAnsi(string).length
     }
   })
 }
 
-function formatDelta (delta) {
+function formatDelta(delta: number): string {
   if (delta < 0) {
     return kleur.red(`↓${Math.abs(delta).toLocaleString()}`)
   }
@@ -74,5 +74,3 @@ function formatDelta (delta) {
   }
   return ''
 }
-
-module.exports = createPluginsTable

@@ -14,21 +14,26 @@
     "url": "git://github.com/yuanqing/figma-plugins-stats.git"
   },
   "files": [
-    "src"
+    "lib"
   ],
   "bin": {
-    "figma-plugins-stats": "src/cli.js"
+    "figma-plugins-stats": "lib/cli.js"
   },
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "clean": "rm -rf '*.log' data",
-    "fix": "prettier-standard '{scripts,src}/**/*.js' && prettier --write '*.json' '.github/**/*.yml'",
-    "lint": "standard '{scripts,src}/**/*.js'",
-    "scrape": "node scripts/scrape.js",
-    "start": "node src/cli.js",
-    "test": "ava --timeout 300s"
+    "build": "yarn run clean && tsc",
+    "clean": "rimraf '*.log' .nyc_output build coverage data lib",
+    "fix": "eslint --fix '{scripts,src}/**/*.ts'",
+    "lint": "eslint '{scripts,src}/**/*.ts'",
+    "prepublishOnly": "yarn run build",
+    "reset": "yarn run clean && rimraf node_modules yarn.lock && yarn install",
+    "scrape": "ts-node scripts/scrape.ts",
+    "start": "ts-node src/cli.ts",
+    "test": "tap 'src/**/__tests__/**/*.ts' --coverage-report html --coverage-report text --jobs-auto --no-browser --reporter terse",
+    "watch": "yarn run clean && tsc --watch"
   },
   "dependencies": {
+    "@yuanqing/cli": "^0.0.7",
     "date-fns": "^2.16.1",
     "date-time": "^3.1.0",
     "fs-extra": "^9.0.1",
@@ -36,20 +41,29 @@
     "isomorphic-unfetch": "^3.1.0",
     "kleur": "^4.1.3",
     "ms": "^2.1.2",
-    "npmlog": "^4.1.2",
     "ora": "^5.1.0",
-    "sade": "^1.7.4",
     "sparkly": "^5.0.0",
     "strip-ansi": "^6.0.0",
     "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "ava": "^3.13.0",
+    "@types/fs-extra": "^9.0.4",
+    "@types/ms": "^0.7.31",
+    "@types/node": "^14.14.8",
+    "@types/tap": "^14.10.1",
+    "@types/text-table": "^0.2.1",
+    "eslint": "^7.13.0",
+    "eslint-config-yuanqing": "^0.0.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.4.0",
+    "lint-staged": "^10.5.1",
     "prettier": "^2.1.2",
-    "prettier-standard": "^16.4.1",
-    "standard": "^14.3.4"
+    "rimraf": "^3.0.2",
+    "tap": "^14.11.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-yuanqing"
   },
   "husky": {
     "hooks": {
@@ -57,9 +71,9 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "standard",
-      "prettier-standard"
+    "*.ts": [
+      "eslint"
     ]
-  }
+  },
+  "prettier": "eslint-config-yuanqing/prettier"
 }

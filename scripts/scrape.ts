@@ -1,6 +1,8 @@
-const fs = require('fs-extra')
-const path = require('path')
-const fetchFigmaPluginsStats = require('../src/fetch/fetch-figma-plugins-stats')
+import * as fs from 'fs-extra'
+import * as path from 'path'
+
+import { PluginData } from '../src/types'
+import { fetchLivePluginsDataAsync } from '../src/utilities/fetch-live-plugins-data-async'
 
 const DATA_DIRECTORY_NAME = 'data'
 const META_DATA_FILE_NAME = 'index.json'
@@ -11,34 +13,37 @@ const PLUGINS_DIRECTORY_NAME = 'plugin'
 const INSTALLS_DATA_FILE_NAME = 'installs.json'
 const LIKES_DATA_FILE_NAME = 'likes.json'
 
-async function main () {
+async function main() {
   const date = new Date().toISOString()
-  const plugins = await fetchFigmaPluginsStats()
-  await writeFile({ date, plugins }, META_DATA_FILE_NAME)
-  await writeStats(date, plugins)
-  await writePlugins(plugins)
-  await writePublishers(plugins)
+  const plugins = await fetchLivePluginsDataAsync()
+  await writeFileAsync({ date, plugins }, META_DATA_FILE_NAME)
+  await writeStatsAsync(date, plugins)
+  await writePluginsAsync(plugins)
+  await writePublishersAsync(plugins)
 }
 main()
 
-async function writeStats (date, plugins) {
-  const stats = {}
+async function writeStatsAsync(
+  date: string,
+  plugins: Array<PluginData>
+): Promise<void> {
+  const stats: { [id: string]: [number, number, number] } = {}
   for (const { id, installCount, likeCount, viewCount } of plugins) {
     stats[id] = [installCount, likeCount, viewCount]
   }
-  await writeFile({ date, stats }, STATS_DATA_FILE_NAME)
-  await writeFile({ date, stats }, `${date.slice(0, 10)}.json`)
+  await writeFileAsync({ date, stats }, STATS_DATA_FILE_NAME)
+  await writeFileAsync({ date, stats }, `${date.slice(0, 10)}.json`)
 }
 
 const shieldsIoJson = {
-  schemaVersion: 1,
-  color: 'brightgreen'
+  color: 'brightgreen',
+  schemaVersion: 1
 }
 
-async function writePlugins (plugins) {
+async function writePluginsAsync(plugins: Array<PluginData>): Promise<void> {
   await fs.remove(path.join(DATA_DIRECTORY_NAME, PLUGINS_DIRECTORY_NAME))
   for (const { id, installCount, likeCount } of plugins) {
-    await writeFile(
+    await writeFileAsync(
       {
         ...shieldsIoJson,
         label: 'installs',
@@ -46,7 +51,7 @@ async function writePlugins (plugins) {
       },
       path.join(PLUGINS_DIRECTORY_NAME, id, INSTALLS_DATA_FILE_NAME)
     )
-    await writeFile(
+    await writeFileAsync(
       {
         ...shieldsIoJson,
         label: 'likes',
@@ -57,9 +62,11 @@ async function writePlugins (plugins) {
   }
 }
 
-async function writePublishers (plugins) {
+async function writePublishersAsync(plugins: Array<PluginData>): Promise<void> {
   await fs.remove(path.join(DATA_DIRECTORY_NAME, PUBLISHERS_DIRECTORY_NAME))
-  const publishers = {}
+  const publishers: {
+    [key: string]: { installCount: number; likeCount: number }
+  } = {}
   for (const { installCount, publisherHandle, likeCount } of plugins) {
     if (typeof publishers[publisherHandle] === 'undefined') {
       publishers[publisherHandle] = {
@@ -72,7 +79,7 @@ async function writePublishers (plugins) {
   }
   for (const publisherHandle of Object.keys(publishers)) {
     const publisher = publishers[publisherHandle]
-    await writeFile(
+    await writeFileAsync(
       {
         ...shieldsIoJson,
         label: 'total installs',
@@ -84,7 +91,7 @@ async function writePublishers (plugins) {
         INSTALLS_DATA_FILE_NAME
       )
     )
-    await writeFile(
+    await writeFileAsync(
       {
         ...shieldsIoJson,
         label: 'total likes',
@@ -99,18 +106,18 @@ async function writePublishers (plugins) {
   }
 }
 
-async function writeFile (data, fileName) {
+async function writeFileAsync(data: any, fileName: string): Promise<void> {
   const file = path.join(DATA_DIRECTORY_NAME, fileName)
   await fs.outputFile(file, `${JSON.stringify(data)}\n`, 'utf8')
 }
 
-function formatNumber (number) {
+function formatNumber(number: number): string {
   return Intl.NumberFormat('en-US', {
     compactDisplay: 'short',
-    notation: 'compact',
+    maximumFractionDigits: 1,
     minimumFractionDigits: number > 999 && number < 100000 ? 1 : 0,
-    maximumFractionDigits: 1
-  })
+    notation: 'compact'
+  } as Intl.NumberFormatOptions)
     .format(number)
     .replace('.0', '')
 }

@@ -1,11 +1,9 @@
-const unfetch = require('isomorphic-unfetch')
+import unfetch from 'isomorphic-unfetch'
 
-function fetch (url) {
+export function fetchAsync(url: string): Promise<Response> {
   return unfetch(
     typeof window === 'undefined'
       ? url
       : `https://cors-anywhere.herokuapp.com/${url}`
   )
 }
-
-module.exports = fetch
