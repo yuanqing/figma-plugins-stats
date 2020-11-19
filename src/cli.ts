@@ -46,7 +46,7 @@ const commandConfig = {
       aliases: ['s'],
       default: 'installs-delta',
       description:
-        "Set the sort order. One of 'name', 'publisher', 'installs', 'installs-delta', 'likes', or 'likes-delta'. Defaults to 'installs-delta'.",
+        "Set the sort order. One of 'name', 'publisher', 'installs', 'installs-delta', 'likes', 'likes-delta', 'views' or 'views-delta'. Defaults to 'installs-delta'.",
       name: 'sort',
       type: [
         'name',
@@ -54,7 +54,9 @@ const commandConfig = {
         'installs',
         'installs-delta',
         'likes',
-        'likes-delta'
+        'likes-delta',
+        'views',
+        'views-delta'
       ]
     },
     {

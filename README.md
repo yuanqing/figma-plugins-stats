@@ -49,7 +49,7 @@ By default, the historical time period is 7 days.
 
 By default, plugins are sorted in descending order of the increase in install count.
 
-- Set this using the `--sort` flag. For example: `--sort publisher`, `--sort name`, `--sort installs`, `--sort installs-delta`, `--sort likes`, `--sort likes-delta`.
+- Set this using the `--sort` flag. For example: `--sort publisher`, `--sort name`, `--sort installs`, `--sort installs-delta`, `--sort likes`, `--sort likes-delta`, `--sort views`, `--sort views-delta`.
 
 Omit the profile handle to get the stats for *all* Figma plugins:
 
@@ -74,8 +74,8 @@ $ npx figma-plugins-stats --help
     -h, --help     Print this message.
     -l, --limit    Limit the number of plugins returned.
     -s, --sort     Set the sort order. One of 'name', 'publisher', 'installs',
-                   'installs-delta', 'likes', or 'likes-delta'. Defaults to
-                   'installs-delta'.
+                   'installs-delta', 'likes', 'likes-delta', 'views' or
+                   'views-delta'. Defaults to 'installs-delta'.
     -t, --time     Set the period of historical data to show. Defaults to
                    '7d'.
     -v, --version  Print the version.
