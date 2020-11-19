@@ -40,7 +40,7 @@ const commandConfig = {
       default: -1,
       description: 'Limit the number of plugins returned.',
       name: 'limit',
-      type: 'POSITIVE_INTEGER'
+      type: 'NON_ZERO_POSITIVE_INTEGER'
     },
     {
       aliases: ['s'],
