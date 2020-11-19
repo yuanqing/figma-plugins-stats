@@ -59,7 +59,7 @@ $ npx figma-plugins-stats | less -r
 
 ## CLI
 
-```sh
+```
 $ npx figma-plugins-stats --help
 
   A CLI to get live and historical stats for your Figma plugins.
@@ -122,7 +122,7 @@ Returns a Promise for an array of objects that each have the following keys:
 
 ## Installation
 
-```sh
+```
 $ npm install --global figma-plugins-stats
 ```
 
