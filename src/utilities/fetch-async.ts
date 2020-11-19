@@ -1,9 +1,9 @@
-import unfetch from 'isomorphic-unfetch'
+import fetch, { Response } from 'node-fetch'
 
 export function fetchAsync(url: string): Promise<Response> {
-  return unfetch(
-    typeof window === 'undefined'
-      ? url
-      : `https://cors-anywhere.herokuapp.com/${url}`
-  )
+  return fetch(`https://cors-anywhere.herokuapp.com/${url}`, {
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest'
+    }
+  })
 }
