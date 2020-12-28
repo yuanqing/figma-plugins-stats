@@ -3,7 +3,6 @@
 
 import { createCli } from '@yuanqing/cli'
 import indentString from 'indent-string'
-import ora from 'ora'
 
 import { fetchFigmaPluginsStatsAsync } from './fetch-figma-plugins-stats-async'
 import { CliOptions, CliPositionals } from './types'
@@ -84,10 +83,6 @@ async function main() {
     if (typeof result !== 'undefined') {
       const positionals = result.positionals as CliPositionals
       const options = result.options as CliOptions
-      const spinner = ora({
-        color: 'gray'
-      })
-      spinner.start()
       const {
         plugins,
         totals,
@@ -99,7 +94,6 @@ async function main() {
         sort: options.sort,
         timeOffset: options.time
       })
-      spinner.stop()
       console.log()
       const dateTable = createDateTable(startDate, endDate)
       console.log(indentString(dateTable, 2))

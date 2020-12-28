@@ -1,4 +1,5 @@
 import ms from 'ms'
+import ora from 'ora'
 
 import { Counts, Plugin, SortKey } from './types'
 import { fetchHistoricalPluginStatsAsync } from './utilities/fetch-historical-plugin-stats-async'
@@ -27,11 +28,18 @@ export async function fetchFigmaPluginsStatsAsync({
     throw new Error('Time offset must be at least 1 day (`1d`)')
   }
   const endDate = new Date()
+  const spinner = ora({
+    color: 'gray'
+  })
+  spinner.start()
+  spinner.text = 'Fetching live plugins stats...'
   const livePluginsData = await fetchLivePluginsDataAsync()
+  spinner.text = 'Fetching historical plugins stats...'
   const { startDate, stats } = await fetchHistoricalPluginStatsAsync(
     endDate,
     timeOffsetInMilliseconds
   )
+  spinner.stop()
   const { plugins, totals } = parseData(livePluginsData, stats, {
     handle,
     limit,
