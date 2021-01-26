@@ -2,6 +2,8 @@
 
 > A CLI to get live and historical stats for your [Figma plugins](https://www.figma.com/community)
 
+*N.B.* Figma Plugin Stats is not official software by Figma. It relies on Figma’s internal APIs, which may break or become unavailable at any time.
+
 ## Quick start
 
 *Requires [Node.js](https://nodejs.org/).*
