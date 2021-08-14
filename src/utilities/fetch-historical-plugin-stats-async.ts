@@ -1,13 +1,15 @@
-import addMilliseconds from 'date-fns/addMilliseconds'
-import differenceInMilliseconds from 'date-fns/differenceInMilliseconds'
-import isBefore from 'date-fns/isBefore'
-import isSameDay from 'date-fns/isSameDay'
-import parseISO from 'date-fns/parseISO'
-import subMilliseconds from 'date-fns/subMilliseconds'
+import {
+  addMilliseconds,
+  differenceInMilliseconds,
+  isBefore,
+  isSameDay,
+  parseISO,
+  subMilliseconds
+} from 'date-fns'
 import ms from 'ms'
 
-import { PluginStats } from '../types'
-import { fetchAsync } from './fetch-async'
+import { PluginStats } from '../types.js'
+import { fetchAsync } from './fetch-async.js'
 
 export async function fetchHistoricalPluginStatsAsync(
   endDate: Date,

@@ -3,8 +3,8 @@ import sparkly from 'sparkly'
 import stripAnsi from 'strip-ansi'
 import textTable from 'text-table'
 
-import { Plugin } from '../types'
-import { pluginStatsKeys } from './plugins-stats-keys'
+import { Plugin } from '../types.js'
+import { pluginStatsKeys } from './plugins-stats-keys.js'
 
 export function createPluginsTable({
   plugins,

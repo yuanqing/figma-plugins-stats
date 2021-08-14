@@ -1,11 +1,11 @@
 import ms from 'ms'
 import ora from 'ora'
 
-import { Counts, Plugin, SortKey } from './types'
-import { fetchHistoricalPluginStatsAsync } from './utilities/fetch-historical-plugin-stats-async'
-import { fetchLivePluginsDataAsync } from './utilities/fetch-live-plugins-data-async'
-import { parseData } from './utilities/parse-data'
-import { sortComparators } from './utilities/sort-comparators'
+import { Counts, Plugin, SortKey } from './types.js'
+import { fetchHistoricalPluginStatsAsync } from './utilities/fetch-historical-plugin-stats-async.js'
+import { fetchLivePluginsDataAsync } from './utilities/fetch-live-plugins-data-async.js'
+import { parseData } from './utilities/parse-data.js'
+import { sortComparators } from './utilities/sort-comparators.js'
 
 export async function fetchFigmaPluginsStatsAsync({
   handle,

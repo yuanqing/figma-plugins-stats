@@ -1,8 +1,8 @@
 import * as fs from 'fs-extra'
 import * as path from 'path'
 
-import { PluginData } from '../src/types'
-import { fetchLivePluginsDataAsync } from '../src/utilities/fetch-live-plugins-data-async'
+import { PluginData } from '../src/types.js'
+import { fetchLivePluginsDataAsync } from '../src/utilities/fetch-live-plugins-data-async.js'
 
 const DATA_DIRECTORY_NAME = 'data'
 const META_DATA_FILE_NAME = 'index.json'

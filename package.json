@@ -13,6 +13,10 @@
     "type": "git",
     "url": "git://github.com/yuanqing/figma-plugins-stats.git"
   },
+  "type": "module",
+  "engines": {
+    "node": ">=14"
+  },
   "files": [
     "lib"
   ],
@@ -22,59 +26,70 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "yarn run clean && tsc",
-    "clean": "rimraf '*.log' .nyc_output build coverage data lib",
-    "fix": "eslint --fix '{scripts,src}/**/*.ts'",
-    "lint": "eslint '{scripts,src}/**/*.ts'",
+    "clean": "rimraf '*.log' build coverage data lib",
+    "fix": "eslint --fix '{scripts,src,test}/**/*.ts'",
+    "lint": "eslint '{scripts,src,test}/**/*.ts'",
     "prepublishOnly": "yarn run build",
     "reset": "yarn run clean && rimraf node_modules yarn.lock && yarn install",
-    "scrape": "ts-node scripts/scrape.ts",
-    "start": "ts-node src/cli.ts",
-    "test": "tap 'src/**/__tests__/**/*.ts' --coverage-report html --coverage-report text --jobs-auto --no-browser --reporter terse --timeout 120",
-    "watch": "yarn run clean && tsc --watch"
+    "scrape": "node --loader ts-node/esm scripts/scrape.ts",
+    "start": "node --loader ts-node/esm src/cli.ts",
+    "test": "ava 'test/**/*.ts'"
   },
   "dependencies": {
-    "@yuanqing/cli": "^0.0.7",
-    "date-fns": "^2.16.1",
-    "date-time": "^3.1.0",
-    "fs-extra": "^9.0.1",
-    "indent-string": "^4.0.0",
-    "kleur": "^4.1.3",
-    "ms": "^2.1.2",
+    "@yuanqing/cli": "^0.0.9",
+    "date-fns": "^2.23.0",
+    "date-time": "^4.0.0",
+    "fs-extra": "^10.0.0",
+    "indent-string": "^5.0.0",
+    "kleur": "^4.1.4",
+    "ms": "^2.1.3",
     "node-fetch": "^2.6.1",
-    "ora": "^5.1.0",
+    "ora": "^5.4.1",
     "sparkly": "^5.0.0",
-    "strip-ansi": "^6.0.0",
+    "strip-ansi": "^7.0.0",
     "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.4",
+    "@types/fs-extra": "^9.0.12",
     "@types/ms": "^0.7.31",
-    "@types/node": "^14.14.8",
-    "@types/node-fetch": "^2.5.7",
-    "@types/tap": "^14.10.1",
-    "@types/text-table": "^0.2.1",
-    "eslint": "^7.13.0",
-    "eslint-config-yuanqing": "^0.0.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
-    "prettier": "^2.1.2",
+    "@types/node": "^16.6.1",
+    "@types/node-fetch": "^2.5.12",
+    "@types/text-table": "^0.2.2",
+    "ava": "^3.15.0",
+    "eslint": "^7.32.0",
+    "eslint-config-yuanqing": "^0.0.5",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
-    "tap": "^14.11.0",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.0.5"
+    "simple-git-hooks": "^2.5.1",
+    "ts-node": "^10.2.0",
+    "typescript": "^4.3.5"
+  },
+  "ava": {
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--loader",
+      "ts-node/esm"
+    ],
+    "nonSemVerExperiments": {
+      "configurableModuleFormat": true
+    },
+    "serial": true,
+    "timeout": "2m"
   },
   "eslintConfig": {
     "extends": "eslint-config-yuanqing"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.ts": [
       "eslint"
     ]
   },
-  "prettier": "eslint-config-yuanqing/prettier"
+  "prettier": "eslint-config-yuanqing/prettier",
+  "simple-git-hooks": {
+    "pre-commit": "yarn run lint-staged",
+    "pre-push": "yarn run lint && yarn run fix && yarn run test"
+  }
 }

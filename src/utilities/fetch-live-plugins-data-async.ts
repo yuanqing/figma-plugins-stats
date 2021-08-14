@@ -1,5 +1,5 @@
-import { PluginData, RawPluginData } from '../types'
-import { fetchAsync } from './fetch-async'
+import { PluginData, RawPluginData } from '../types.js'
+import { fetchAsync } from './fetch-async.js'
 
 export async function fetchLivePluginsDataAsync(): Promise<Array<PluginData>> {
   const data = await fetchRawPluginsDataAsync()

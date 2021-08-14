@@ -1,5 +1,5 @@
-import { Count, Counts, Plugin, PluginData, PluginStats } from '../types'
-import { pluginStatsKeys } from './plugins-stats-keys'
+import { Count, Counts, Plugin, PluginData, PluginStats } from '../types.js'
+import { pluginStatsKeys } from './plugins-stats-keys.js'
 
 export function parseData(
   pluginsData: Array<PluginData>,

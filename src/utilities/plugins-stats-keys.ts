@@ -1,4 +1,4 @@
-import { PluginStats } from '../types'
+import { PluginStats } from '../types.js'
 
 export const pluginStatsKeys: Array<keyof PluginStats> = [
   'installCount',

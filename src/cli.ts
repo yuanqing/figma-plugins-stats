@@ -2,14 +2,21 @@
 /* eslint-disable no-console */
 
 import { createCli } from '@yuanqing/cli'
+import { readFileSync } from 'fs'
 import indentString from 'indent-string'
+import { dirname, resolve } from 'path'
+import { fileURLToPath } from 'url'
 
-import { fetchFigmaPluginsStatsAsync } from './fetch-figma-plugins-stats-async'
-import { CliOptions, CliPositionals } from './types'
-import { createDateTable } from './utilities/create-date-table'
-import { createPluginsTable } from './utilities/create-plugins-table'
+import { fetchFigmaPluginsStatsAsync } from './fetch-figma-plugins-stats-async.js'
+import { CliOptions, CliPositionals } from './types.js'
+import { createDateTable } from './utilities/create-date-table.js'
+import { createPluginsTable } from './utilities/create-plugins-table.js'
 
-const packageJson = require('../package.json')
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+const packageJson = JSON.parse(
+  readFileSync(resolve(__dirname, '..', 'package.json'), 'utf8')
+)
 
 const cliConfig = {
   name: packageJson.name,
@@ -83,17 +90,13 @@ async function main() {
     if (typeof result !== 'undefined') {
       const positionals = result.positionals as CliPositionals
       const options = result.options as CliOptions
-      const {
-        plugins,
-        totals,
-        startDate,
-        endDate
-      } = await fetchFigmaPluginsStatsAsync({
-        handle: positionals.handle,
-        limit: options.limit,
-        sort: options.sort,
-        timeOffset: options.time
-      })
+      const { plugins, totals, startDate, endDate } =
+        await fetchFigmaPluginsStatsAsync({
+          handle: positionals.handle,
+          limit: options.limit,
+          sort: options.sort,
+          timeOffset: options.time
+        })
       console.log()
       const dateTable = createDateTable(startDate, endDate)
       console.log(indentString(dateTable, 2))

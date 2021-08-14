@@ -1,3 +1,1 @@
-import { fetchLivePluginsDataAsync } from './utilities/fetch-live-plugins-data-async'
-
-export default fetchLivePluginsDataAsync
+export { fetchLivePluginsDataAsync } from './utilities/fetch-live-plugins-data-async.js'

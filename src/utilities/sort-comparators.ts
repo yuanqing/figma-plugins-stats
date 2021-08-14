@@ -1,4 +1,4 @@
-import { Plugin, SortKey } from '../types'
+import { Plugin, SortKey } from '../types.js'
 
 export const sortComparators: {
   [key in SortKey]: (a: Plugin, b: Plugin) => number

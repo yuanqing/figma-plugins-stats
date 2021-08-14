@@ -102,7 +102,7 @@ $ npx figma-plugins-stats --help
 ## API
 
 ```js
-const fetchLivePluginsDataAsync = require('figma-plugins-stats')
+import { fetchLivePluginsDataAsync } from 'figma-plugins-stats'
 ```
 
 #### const plugins = await fetchLivePluginsDataAsync()

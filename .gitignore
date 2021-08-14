@@ -1,5 +1,4 @@
 .DS_Store
-.nyc_output/
 build/
 coverage/
 data/

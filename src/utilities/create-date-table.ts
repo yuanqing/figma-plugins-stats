@@ -1,4 +1,4 @@
-import differenceInMilliseconds from 'date-fns/differenceInMilliseconds'
+import { differenceInMilliseconds } from 'date-fns'
 import dateTime from 'date-time'
 import kleur from 'kleur'
 import ms from 'ms'

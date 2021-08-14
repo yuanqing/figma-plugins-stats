@@ -1,7 +1,7 @@
-import { test } from 'tap'
+import test from 'ava'
 
-import { PluginData } from '../../types'
-import { fetchLivePluginsDataAsync } from '../fetch-live-plugins-data-async'
+import { PluginData } from '../src/types.js'
+import { fetchLivePluginsDataAsync } from '../src/utilities/fetch-live-plugins-data-async.js'
 
 test('fetches the stats of all public Figma plugins', async function (t) {
   t.plan(3)
