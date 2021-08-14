@@ -26,7 +26,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "yarn run clean && tsc",
-    "clean": "rimraf '*.log' build coverage data lib",
+    "clean": "rimraf '*.log' build data lib",
     "fix": "eslint --fix '{scripts,src,test}/**/*.ts'",
     "lint": "eslint '{scripts,src,test}/**/*.ts'",
     "prepublishOnly": "yarn run build",
