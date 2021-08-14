@@ -1,6 +1,6 @@
 # Figma Plugins Stats [![npm Version](https://img.shields.io/npm/v/figma-plugins-stats?cacheSeconds=1800)](https://www.npmjs.com/package/figma-plugins-stats) [![build](https://github.com/yuanqing/figma-plugins-stats/workflows/build/badge.svg)](https://github.com/yuanqing/figma-plugins-stats/actions?query=workflow%3Abuild)
 
-> A CLI to get live and historical stats for your [Figma plugins](https://www.figma.com/community)
+> A CLI to get live and historical stats for your [Figma plugins](https://figma.com/community/explore?tab=plugins)
 
 *N.B.* Figma Plugin Stats is not official software by Figma. It relies on Figma’s internal APIs, which may break or become unavailable at any time.
 
@@ -8,10 +8,10 @@
 
 *Requires [Node.js](https://nodejs.org/).*
 
-To get the plugin stats for a particular plugin publisher, enter `npx figma-plugins-stats` followed by a [profile handle](https://help.figma.com/hc/en-us/articles/360038510833--Create-a-Community-Profile#Creator_profiles):
+To get the plugin stats for a particular plugin publisher, enter `npx --yes -- figma-plugins-stats` followed by a [profile handle](https://help.figma.com/hc/en-us/articles/360038510833--Create-a-Community-Profile#Creator_profiles):
 
 ```
-$ npx figma-plugins-stats yuanqing
+$ npx --yes -- figma-plugins-stats yuanqing
 
   period  7d
   from    2020-11-12 14:13:17 UTC+8
@@ -56,13 +56,13 @@ By default, plugins are sorted in descending order of the increase in install co
 Omit the profile handle to get the stats for *all* Figma plugins:
 
 ```
-$ npx figma-plugins-stats | less -r
+$ npx --yes -- figma-plugins-stats | less -r
 ```
 
 ## CLI
 
 ```
-$ npx figma-plugins-stats --help
+$ npx --yes -- figma-plugins-stats --help
 
   A CLI to get live and historical stats for your Figma plugins.
 
