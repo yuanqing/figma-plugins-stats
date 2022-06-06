@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 14
       - run: yarn install --frozen-lockfile
-      - run: yarn run scrape
+      - run: npm run scrape
       - run: |
           rm -rf .git
           git clone --single-branch --branch gh-pages --depth 1 https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git gh-pages

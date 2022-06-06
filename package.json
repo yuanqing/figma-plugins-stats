@@ -25,12 +25,12 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "build": "yarn run clean && tsc",
+    "build": "npm run clean && tsc",
     "clean": "rimraf '*.log' build data lib",
     "fix": "eslint --fix '{scripts,src,test}/**/*.ts'",
     "lint": "eslint '{scripts,src,test}/**/*.ts'",
-    "prepublishOnly": "yarn run build",
-    "reset": "yarn run clean && rimraf node_modules yarn.lock && yarn install",
+    "prepublishOnly": "npm run build",
+    "reset": "npm run clean && rimraf node_modules yarn.lock && yarn install",
     "scrape": "node --loader ts-node/esm scripts/scrape.ts",
     "start": "node --loader ts-node/esm src/cli.ts",
     "test": "ava 'test/**/*.ts'"
@@ -89,7 +89,7 @@
   },
   "prettier": "eslint-config-yuanqing/prettier",
   "simple-git-hooks": {
-    "pre-commit": "yarn run lint-staged",
-    "pre-push": "yarn run lint && yarn run fix && yarn run test"
+    "pre-commit": "npx lint-staged",
+    "pre-push": "npm run lint && npm run fix && npm run test"
   }
 }
