@@ -105,7 +105,7 @@ async function main() {
       console.log(indentString(pluginsTable, 2))
       console.log()
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error(`${packageJson.name}: ${error.message}`)
     process.exit(1)
   }

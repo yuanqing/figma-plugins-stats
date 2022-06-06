@@ -41,7 +41,7 @@ async function fetchHistoricalPluginStatsForDate(
       date === null ? 'stats' : date.toISOString().slice(0, 10)
     }.json`
   )
-  const json = await response.json()
+  const json: any = await response.json()
   const stats: { [id: string]: PluginStats } = {}
   for (const id in json.stats) {
     stats[id] = {
