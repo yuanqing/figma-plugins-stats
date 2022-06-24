@@ -9,9 +9,9 @@ export async function fetchLivePluginsDataAsync(): Promise<Array<PluginData>> {
 async function fetchRawPluginsDataAsync(): Promise<Array<RawPluginData>> {
   let result: any = []
   let url =
-    'https://www.figma.com/api/plugins/browse?sort_order=desc&resource_type=plugins&page_size=50'
+    '/api/plugins/browse?sort_order=desc&resource_type=plugins&page_size=50'
   while (typeof url !== 'undefined') {
-    const response = await fetchAsync(url)
+    const response = await fetchAsync(`https://www.figma.com${url}`)
     const json: any = await response.json()
     result = result.concat(json.meta.plugins)
     url = json.pagination.next_page
