@@ -30,7 +30,7 @@
     "fix": "eslint --fix '{scripts,src,test}/**/*.ts'",
     "lint": "eslint '{scripts,src,test}/**/*.ts'",
     "prepublishOnly": "npm run build",
-    "reset": "npm run clean && rimraf node_modules yarn.lock && yarn install",
+    "reset": "npm run clean && rimraf node_modules package-lock.json && npm install",
     "scrape": "node --loader ts-node/esm scripts/scrape.ts",
     "start": "node --loader ts-node/esm src/cli.ts",
     "test": "ava --serial 'test/**/*.ts'"
