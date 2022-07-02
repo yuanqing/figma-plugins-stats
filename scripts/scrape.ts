@@ -12,6 +12,8 @@ const PUBLISHERS_DIRECTORY_NAME = 'publisher'
 const PLUGINS_DIRECTORY_NAME = 'plugin'
 const INSTALLS_DATA_FILE_NAME = 'installs.json'
 const LIKES_DATA_FILE_NAME = 'likes.json'
+const RUNS_DATA_FILE_NAME = 'runs.json'
+const VIEWS_DATA_FILE_NAME = 'views.json'
 
 async function main() {
   const date = new Date().toISOString()
@@ -27,9 +29,9 @@ async function writeStatsAsync(
   date: string,
   plugins: Array<PluginData>
 ): Promise<void> {
-  const stats: { [id: string]: [number, number, number] } = {}
-  for (const { id, installCount, likeCount, viewCount } of plugins) {
-    stats[id] = [installCount, likeCount, viewCount]
+  const stats: { [id: string]: [number, number, number, number] } = {}
+  for (const { id, installCount, likeCount, runCount, viewCount } of plugins) {
+    stats[id] = [installCount, likeCount, runCount, viewCount]
   }
   await writeFileAsync({ date, stats }, STATS_DATA_FILE_NAME)
   await writeFileAsync({ date, stats }, `${date.slice(0, 10)}.json`)
@@ -42,7 +44,7 @@ const shieldsIoJson = {
 
 async function writePluginsAsync(plugins: Array<PluginData>): Promise<void> {
   await fs.remove(path.join(DATA_DIRECTORY_NAME, PLUGINS_DIRECTORY_NAME))
-  for (const { id, installCount, likeCount } of plugins) {
+  for (const { id, installCount, likeCount, runCount, viewCount } of plugins) {
     await writeFileAsync(
       {
         ...shieldsIoJson,
@@ -59,23 +61,54 @@ async function writePluginsAsync(plugins: Array<PluginData>): Promise<void> {
       },
       path.join(PLUGINS_DIRECTORY_NAME, id, LIKES_DATA_FILE_NAME)
     )
+    await writeFileAsync(
+      {
+        ...shieldsIoJson,
+        label: 'runs',
+        message: formatNumber(runCount)
+      },
+      path.join(PLUGINS_DIRECTORY_NAME, id, RUNS_DATA_FILE_NAME)
+    )
+    await writeFileAsync(
+      {
+        ...shieldsIoJson,
+        label: 'views',
+        message: formatNumber(viewCount)
+      },
+      path.join(PLUGINS_DIRECTORY_NAME, id, VIEWS_DATA_FILE_NAME)
+    )
   }
 }
 
 async function writePublishersAsync(plugins: Array<PluginData>): Promise<void> {
   await fs.remove(path.join(DATA_DIRECTORY_NAME, PUBLISHERS_DIRECTORY_NAME))
   const publishers: {
-    [key: string]: { installCount: number; likeCount: number }
+    [key: string]: {
+      installCount: number
+      likeCount: number
+      runCount: number
+      viewCount: number
+    }
   } = {}
-  for (const { installCount, publisherHandle, likeCount } of plugins) {
+  for (const {
+    installCount,
+    likeCount,
+    publisherHandle,
+    runCount,
+    viewCount
+  } of plugins) {
     if (typeof publishers[publisherHandle] === 'undefined') {
       publishers[publisherHandle] = {
         installCount: 0,
-        likeCount: 0
+        likeCount: 0,
+        runCount: 0,
+        viewCount: 0
       }
     }
     publishers[publisherHandle].installCount += installCount
     publishers[publisherHandle].likeCount += likeCount
+    publishers[publisherHandle].runCount += runCount
+    publishers[publisherHandle].viewCount += viewCount
   }
   for (const publisherHandle of Object.keys(publishers)) {
     const publisher = publishers[publisherHandle]
@@ -101,6 +134,26 @@ async function writePublishersAsync(plugins: Array<PluginData>): Promise<void> {
         PUBLISHERS_DIRECTORY_NAME,
         publisherHandle,
         LIKES_DATA_FILE_NAME
+      )
+    )
+    await writeFileAsync(
+      {
+        ...shieldsIoJson,
+        label: 'total runs',
+        message: formatNumber(publisher.runCount)
+      },
+      path.join(PUBLISHERS_DIRECTORY_NAME, publisherHandle, RUNS_DATA_FILE_NAME)
+    )
+    await writeFileAsync(
+      {
+        ...shieldsIoJson,
+        label: 'total views',
+        message: formatNumber(publisher.viewCount)
+      },
+      path.join(
+        PUBLISHERS_DIRECTORY_NAME,
+        publisherHandle,
+        VIEWS_DATA_FILE_NAME
       )
     )
   }
