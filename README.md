@@ -14,44 +14,46 @@ To get the plugin stats for a particular plugin publisher, enter `npx --yes -- f
 $ npx --yes -- figma-plugins-stats yuanqing
 
   period  7d
-  from    2020-11-12 14:13:17 UTC+8
-  to      2020-11-19 08:21:43 UTC+8
+  from    2022-06-25 14:04:59 UTC+8
+  to      2022-07-03 00:14:46 UTC+8
 
-  no  name                         publisher      installs             likes           views
-  1   Clean Document               Yuan Qing Lim  ▅▅▃▄██▄ 31,439 ↑267  █▄▁▁▁▁▁ 426 ↑3  ▆▆▃▅██▇ 359,142 ↑11,570
-  2   Insert Big Image             Yuan Qing Lim  ▅▅▃▄█▆▃ 5,624  ↑252  ▁▁▁▁█▁▁ 113 ↑1  █▇▆███▅ 134,382 ↑8,516
-  3   Organize Layers              Yuan Qing Lim  ▇▃▄▄▃█▅ 3,040  ↑66   ▁▁▁▁▁▁▁ 68      █▅▄▅▇█▆ 70,165  ↑3,528
-  4   Select Layers                Yuan Qing Lim  ▆▃▃▃▅█▇ 2,109  ↑65   ▁▁▁▁▁█▁ 54  ↑1  ▅▄▃▆██▇ 50,572  ↑2,899
-  5   Sort Layers                  Yuan Qing Lim  ▅▄▁▂▃█▂ 2,889  ↑45   ▁▁▁▁▁▁▁ 45      ▆▄▂▄▅█▅ 47,351  ↑2,902
-  6   Component Utilities          Yuan Qing Lim  ██▁▄▇▄█ 2,340  ↑39   ▁▁▁▁▁▁█ 69  ↑1  █▇▃▅▅██ 93,114  ↑4,122
-  7   Flatten Selection to Bitmap  Yuan Qing Lim  ▅▅▃▁▅██ 1,036  ↑28   ▁▁▁▁▁▁▁ 34      █▅▄▇▄▆▆ 57,440  ↑2,378
-  8   Text Utilities               Yuan Qing Lim  ▄█▁▁▂▄▄ 64     ↑11   ▁▁▁▁▁▁▁ 6       ██▆██▇▇ 9,708   ↑2,011
-  9   Distribute Layers            Yuan Qing Lim  ▄▄▂▂▁█▁ 999    ↑10   ▁▁▁▁▁▁▁ 11      ▆▄▆█▆█▄ 21,091  ↑1,491
-  10  Language Tester              Yuan Qing Lim  ▆▃▁▁▆█▆ 1,540  ↑10   ▁▁▁▁▁▁▁ 22      █▇█▇▅▅▅ 31,563  ↑1,541
-  11  Format Currency              Yuan Qing Lim  ██▁▄▄▄█ 979    ↑9    ▁▁▁▁▁▁▁ 14      ▇▇▄█▇▄█ 23,505  ↑1,465
-  12  Draw Mask Under Selection    Yuan Qing Lim  ▄▄▄▁▁▁█ 422    ↑5    ▁▁▁▁▁▁▁ 8       █▃██▅▄█ 14,657  ↑1,266
-  13  Set Layer Size               Yuan Qing Lim  █▄▁▁█▁▁ 393    ↑4    ▁▁▁▁▁▁▁ 17      █▆▅█▄▅▆ 21,665  ↑1,563
-  14  Draw Slice Over Selection    Yuan Qing Lim  ▁█▁▁▁█▁ 797    ↑2    ▁▁▁▁▁▁▁ 6       █▄███▇▇ 14,377  ↑1,097
-  15  Move Layers                  Yuan Qing Lim  █▁▁▁█▁▁ 971    ↑2    ▁▁▁▁▁▁▁ 7       █▄█▇▆▄▅ 20,308  ↑1,256
+  no  name                         publisher      runs                    installs              likes            views
+  1   Clean Document               Yuan Qing Lim  ▁▁▁▁█ 39,082  ↑39,082   ▆▇█▅▁ 75,926  ↑397    ▄▂█▆▁ 949   ↑10  ▄▅█▇▁ 49,777  ↑467
+  2   Insert Big Image             Yuan Qing Lim  ▁▁▁▁█ 36,468  ↑36,468   ▇██▃▁ 44,379  ↑456    ▆▆█▁▁ 471   ↑7   ▄▅█▇▁ 40,870  ↑667
+  3   Draw Connector               Yuan Qing Lim  ▁▁▁▁█ 19,737  ↑19,737   ▄▆█▄▁ 21,266  ↑302    █▄▁█▁ 353   ↑5   ▄▅█▆▁ 33,135  ↑606
+  4   Select Layers                Yuan Qing Lim  ▁▁▁▁█ 12,066  ↑12,066   ▅▇█▄▁ 16,563  ↑188    ▆▁█▁▁ 281   ↑5   ▃▄█▄▁ 17,691  ↑335
+  5   Sort Layers                  Yuan Qing Lim  ▁▁▁▁█ 8,536   ↑8,536    ▅▅█▂▁ 11,375  ↑81     ▁▁▁▁▁ 169        ▃▃█▇▁ 11,694  ↑172
+  6   Organize Layers              Yuan Qing Lim  ▁▁▁▁█ 8,458   ↑8,458    ███▆▁ 12,958  ↑73     ▁██▁▁ 217   ↑2   ▃▅█▆▁ 15,518  ↑127
+  7   Flatten Selection to Bitmap  Yuan Qing Lim  ▁▁▁▁█ 8,236   ↑8,236    ▇█▇▂▁ 10,484  ↑68     ▁█▁▁▁ 142   ↑1   ▅▅█▇▁ 13,725  ↑180
+  8   Component Utilities          Yuan Qing Lim  ▁▁▁▁█ 5,661   ↑5,661    ▄█▃▂▁ 7,458   ↑23     █▁▁▁▁ 213   ↑1   ▄▅█▄▁ 17,855  ↑148
+  9   Upscale Image                Yuan Qing Lim  ▁▁▁▁█ 2,898   ↑2,898    █▅▆▃▁ 3,428   ↑46     ▁▁▁▁▁ 63         █▅▇▆▁ 4,745   ↑81
+  10  Language Tester              Yuan Qing Lim  ▁▁▁▁█ 2,764   ↑2,764    █▄▄▃▁ 4,202   ↑27     ▁▁▁▁▁ 72         ▃▆█▅▁ 5,402   ↑71
+  11  Text Utilities               Yuan Qing Lim  ▁▁▁▁█ 1,476   ↑1,476    ██▄▁▁ 1,969   ↑10     █▁▁▁▁ 78    ↑1   ▆▄█▄▁ 6,038   ↑53
+  12  Set Layer Size               Yuan Qing Lim  ▁▁▁▁█ 1,290   ↑1,290    ██▄▄▁ 2,121   ↑12     ▁▁▁▁▁ 46         ▅██▄▁ 3,641   ↑36
+  13  Format Currency              Yuan Qing Lim  ▁▁▁▁█ 1,227   ↑1,227    ▅█▁▄▁ 2,208   ↑10     ▁▁▁▁▁ 32         ▄▅█▅▂ 4,214   ↑58
+  14  Distribute Layers            Yuan Qing Lim  ▁▁▁▁█ 767     ↑767      ▄▅█▁▁ 1,975   ↑10     █▁▁▁▁ 32    ↑1   ▆██▇▂ 2,506   ↑22
+  15  Move Layers                  Yuan Qing Lim  ▁▁▁▁█ 676     ↑676      █▆▃▁▁ 1,959   ↑6      ▁▁▁▁▁ 33         ▄█▆▄▃ 2,676   ↑18
+  16  Draw Mask Under Selection    Yuan Qing Lim  ▁▁▁▁█ 608     ↑608      █▄▄▁▁ 1,129   ↑4      ▁▁▁▁▁ 24         ▄▄█▄▁ 1,801   ↑11
+  17  Draw Slice Over Selection    Yuan Qing Lim  ▁▁▁▁█ 418     ↑418      ▁█▄▁▁ 1,246   ↑2      ▁▁▁▁▁ 20         ▁▁█▂▁ 1,388   ↑15
 
-                                   totals         ▆▆▃▄██▅ 54,642 ↑815  █▄▁▁▄▄▄ 900 ↑6  █▆▅▇██▇ 969,040 ↑47,605
+                                   totals         ▁▁▁▁█ 150,368 ↑150,368  ▆██▄▁ 220,646 ↑1,715  █▅█▄▁ 3,195 ↑33  ▄▅█▆▁ 232,676 ↑3,067
 
 ```
 
 In the above example, for the plugin `Clean Document`, we see that:
 
-- `31,439` is the current install count.
-- `267` is the increase in install count over the 7-day period.
-- The [sparkline](https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR) (`▅▅▃▄██▄`) shows the trend in the increase in install count over the period.
+- `75,926` is the current install count.
+- `397` is the increase in install count over the 7-day period.
+- The [sparkline](https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR) (`▆▇█▅▁`) shows the trend in the increase in install count over the period.
 
 By default, the historical time period is 7 days.
 
 - Set this using the `--time` flag. For example: `--time 7d`, `--time 2w`.
 - *N.B.* Historical data goes back to 1 April 2020 at the most.
 
-By default, plugins are sorted in descending order of the increase in install count.
+By default, plugins are sorted in descending order of the increase in run count.
 
-- Set this using the `--sort` flag. For example: `--sort publisher`, `--sort name`, `--sort installs`, `--sort installs-delta`, `--sort likes`, `--sort likes-delta`, `--sort views`, `--sort views-delta`.
+- Set this using the `--sort` flag. For example: `--sort publisher`, `--sort name`, `--sort installs`, `--sort installs-delta`, `--sort likes`, `--sort likes-delta`, `--sort runs`, `--sort runs-delta`, `--sort views`, `--sort views-delta`.
 
 Omit the profile handle to get the stats for *all* Figma plugins:
 
@@ -76,8 +78,9 @@ $ npx --yes -- figma-plugins-stats --help
     -h, --help     Print this message.
     -l, --limit    Limit the number of plugins returned.
     -s, --sort     Set the sort order. One of 'name', 'publisher', 'installs',
-                   'installs-delta', 'likes', 'likes-delta', 'views' or
-                   'views-delta'. Defaults to 'installs-delta'.
+                   'installs-delta', 'likes', 'likes-delta', 'runs',
+                   'runs-delta', 'views' or 'views-delta'. Defaults to
+                   'runs-delta'.
     -t, --time     Set the period of historical data to show. Defaults to
                    '7d'.
     -v, --version  Print the version.
@@ -92,6 +95,8 @@ $ npx --yes -- figma-plugins-stats --help
     $ figma-plugins-stats --sort installs-delta
     $ figma-plugins-stats --sort likes
     $ figma-plugins-stats --sort likes-delta
+    $ figma-plugins-stats --sort runs
+    $ figma-plugins-stats --sort runs-delta
     $ figma-plugins-stats --sort views
     $ figma-plugins-stats --sort views-delta
     $ figma-plugins-stats --time 7d
@@ -120,6 +125,7 @@ Returns a Promise for an array of objects that each have the following keys:
 - `publisherName`
 - `installCount`
 - `likeCount`
+- `runCount`
 - `viewCount`
 
 ## Installation
@@ -136,6 +142,12 @@ Figma Plugins Stats also provides a JSON API for displaying stats as [Shields.io
 
 *Replace `<ID>` with your Figma plugin ID*
 
+[![runs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/runs.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/runs.json)
+
+```md
+![runs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/<ID>/runs.json)
+```
+
 [![installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/installs.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/installs.json)
 
 ```md
@@ -148,9 +160,21 @@ Figma Plugins Stats also provides a JSON API for displaying stats as [Shields.io
 ![likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/<ID>/likes.json)
 ```
 
+[![views](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/views.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/767379019764649932/views.json)
+
+```md
+![views](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/<ID>/views.json)
+```
+
 ### Publisher stats
 
 *Replace `<PUBLISHER>` with your Figma profile handle*
+
+[![total runs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/runs.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/runs.json)
+
+```md
+![total runs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/<PUBLISHER>/runs.json)
+```
 
 [![total installs](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/installs.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/installs.json)
 
@@ -162,6 +186,12 @@ Figma Plugins Stats also provides a JSON API for displaying stats as [Shields.io
 
 ```md
 ![total likes](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/<PUBLISHER>/likes.json)
+```
+
+[![total views](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/views.json)](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/yuanqing/views.json)
+
+```md
+![total views](https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/publisher/<PUBLISHER>/views.json)
 ```
 
 ## Implementation details
