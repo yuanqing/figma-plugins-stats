@@ -50,6 +50,6 @@ function parseRawPluginsData(data: Array<RawPluginData>): Array<PluginData> {
     })
   }
   return plugins.sort(function (a: PluginData, b: PluginData) {
-    return a.name.localeCompare(b.name)
+    return a.id.localeCompare(b.id, undefined, { numeric: true })
   })
 }
