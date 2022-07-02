@@ -35,6 +35,8 @@ const commandConfig = {
     '--sort installs-delta',
     '--sort likes',
     '--sort likes-delta',
+    '--sort runs',
+    '--sort runs-delta',
     '--sort views',
     '--sort views-delta',
     '--time 7d',
@@ -50,9 +52,9 @@ const commandConfig = {
     },
     {
       aliases: ['s'],
-      default: 'installs-delta',
+      default: 'runs-delta',
       description:
-        "Set the sort order. One of 'name', 'publisher', 'installs', 'installs-delta', 'likes', 'likes-delta', 'views' or 'views-delta'. Defaults to 'installs-delta'.",
+        "Set the sort order. One of 'name', 'publisher', 'installs', 'installs-delta', 'likes', 'likes-delta', 'runs', 'runs-delta', 'views' or 'views-delta'. Defaults to 'runs-delta'.",
       name: 'sort',
       type: [
         'name',
@@ -61,6 +63,8 @@ const commandConfig = {
         'installs-delta',
         'likes',
         'likes-delta',
+        'runs',
+        'runs-delta',
         'views',
         'views-delta'
       ]

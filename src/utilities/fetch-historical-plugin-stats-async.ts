@@ -47,7 +47,8 @@ async function fetchHistoricalPluginStatsForDate(
     stats[id] = {
       installCount: json.stats[id][0],
       likeCount: json.stats[id][1],
-      viewCount: json.stats[id][2]
+      runCount: json.stats[id][2],
+      viewCount: json.stats[id][3]
     }
   }
   return {
@@ -57,7 +58,7 @@ async function fetchHistoricalPluginStatsForDate(
 }
 
 const EARLIEST_STATS_DATE = new Date('2020-04-01') // only have data going back to this date
-const GRANULARITY = 7 // number of segments in our sparklines
+const GRANULARITY = 4 // number of segments in our sparklines
 const ONE_DAY_IN_MILLISECONDS = ms('1d')
 
 function computeDates(

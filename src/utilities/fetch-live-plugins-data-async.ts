@@ -46,6 +46,7 @@ function parseRawPluginsData(data: Array<RawPluginData>): Array<PluginData> {
       publisherHandle: item.publisher.profile_handle,
       publisherId: item.publisher.id,
       publisherName: item.publisher.name,
+      runCount: item.unique_run_count,
       viewCount: item.view_count
     })
   }

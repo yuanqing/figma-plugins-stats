@@ -17,6 +17,8 @@ export function createPluginsTable({
     kleur.gray('no'),
     kleur.gray(' name'),
     kleur.gray(' publisher'),
+    kleur.gray(' runs'),
+    '',
     kleur.gray(' installs'),
     '',
     kleur.gray(' likes'),
@@ -42,6 +44,10 @@ export function createPluginsTable({
     '',
     '',
     kleur.gray(' totals'),
+    ` ${sparkly(
+      totals.runCount.deltas
+    )} ${totals.runCount.count.toLocaleString()}`,
+    formatDelta(totals.runCount.totalDelta),
     ` ${sparkly(
       totals.installCount.deltas
     )} ${totals.installCount.count.toLocaleString()}`,

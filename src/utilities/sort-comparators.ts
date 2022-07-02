@@ -21,6 +21,12 @@ export const sortComparators: {
   'publisher': function (a: Plugin, b: Plugin) {
     return a.publisher.toLowerCase().localeCompare(b.publisher.toLowerCase())
   },
+  'runs': function (a: Plugin, b: Plugin) {
+    return b.runCount.count - a.runCount.count
+  },
+  'runs-delta': function (a: Plugin, b: Plugin) {
+    return b.runCount.totalDelta - a.runCount.totalDelta
+  },
   'views': function (a: Plugin, b: Plugin) {
     return b.viewCount.count - a.viewCount.count
   },

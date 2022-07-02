@@ -20,10 +20,10 @@ export type RawPluginData = {
     profile_handle: string
     id: string
     name: string
-    install_count: number
   }
   install_count: number
   like_count: number
+  unique_run_count: number
   view_count: number
 }
 
@@ -39,6 +39,7 @@ export interface PluginData extends PluginStats {
 export interface PluginStats {
   installCount: number
   likeCount: number
+  runCount: number
   viewCount: number
 }
 
@@ -49,6 +50,7 @@ export interface Plugin extends Counts {
 export interface Counts {
   installCount: Count
   likeCount: Count
+  runCount: Count
   viewCount: Count
 }
 export type Count = {
@@ -64,5 +66,7 @@ export type SortKey =
   | 'installs-delta'
   | 'likes'
   | 'likes-delta'
+  | 'runs'
+  | 'runs-delta'
   | 'views'
   | 'views-delta'
